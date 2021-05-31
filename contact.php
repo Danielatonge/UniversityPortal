@@ -13,7 +13,7 @@
                         <div class="contact-details">
                             <h5>Kazan, Russia</h5>
                             <p>
-                                4343 Hinkle Deegan Lake Road
+                                Bolshaya krasnaya 55b
                             </p>
                         </div>
                     </div>
@@ -22,7 +22,7 @@
                             <span class="lnr lnr-phone-handset"></span>
                         </div>
                         <div class="contact-details">
-                            <h5>00 (958) 9865 562</h5>
+                            <h5>+7 (999) 169 48 83</h5>
                             <p>Weekdays</p>
                         </div>
                     </div>
@@ -31,14 +31,14 @@
                             <span class="lnr lnr-envelope"></span>
                         </div>
                         <div class="contact-details">
-                            <h5>abc@gmail.com</h5>
+                            <h5>royalediamond7@gmail.com</h5>
                             <p>Drop a mail anytime!</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-8">
                     <form class="form-area contact-form text-right" id="myForm"
-                        action="https://preview.colorlib.com/theme/education/mail.php" method="post">
+                        action="" method="post">
                         <div class="row">
                             <div class="col-lg-6 form-group">
                                 <input name="name" placeholder="Enter your name" onfocus="this.placeholder = ''"

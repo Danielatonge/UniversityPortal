@@ -7,7 +7,7 @@
             <div class="row justify-content-between align-items-center">
                 <div class="col-lg-6 col-md-6 search-course-left">
                     <h1 class="text-white">
-                        University System <br>
+                        Rejoyce Uni System <br>
                         Flexible portal for all!
                     </h1>
                     <p>
