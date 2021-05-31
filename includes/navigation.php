@@ -1,4 +1,4 @@
-<?php $role = 3; ?>
+<?php $role = 2; ?>
 
 <body>
     <header id="header">
