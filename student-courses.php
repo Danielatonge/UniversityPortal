@@ -1,43 +1,5 @@
-<!DOCTYPE html>
-<html lang="zxx" class="no-js">
-
-<head>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="shortcut icon" href="img/fav.html">
-
-    <meta charset="UTF-8">
-
-    <title>UniPortal</title>
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/main-style.css" />
-</head>
-
-<body>
-    <header id="header">
-        <div class="container main-menu">
-            <div class="row align-items-center justify-content-between d-flex">
-                <div id="logo">
-                    <a href="index.html"><img src="img/xlogo.png.pagespeed.ic.IkdGzsW_qc.png" alt="" title="" /></a>
-                </div>
-                <nav id="nav-menu-container">
-                    <ul class="nav-menu">
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="student-courses.html">Courses</a></li>
-                        <li><a href="student-report.html">Report</a></li>
-                        <li><a href="student-news.html">News</a></li>
-                        <li><a href="student-library.html">Library</a></li>
-                        <li>Username (<a href="logout.html">Logout</a>)</li>
-                        
-                        
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
+<?php include "includes/header.php"; ?>
+<?php include "includes/navigation.php"; ?>
 
     <section class="blog-area section-gap" id="blog">
         <div class="container">
@@ -55,7 +17,7 @@
                         <img class="img-fluid" src="img/xb1.jpg.pagespeed.ic.9F-kTnBvcY.jpg" alt="">
                     </div>
                     <p class="meta">25 April, 2018 | By <a href="#">Mark Wiens</a></p>
-                    <a href="course-details.html">
+                    <a href="course-details.php">
                         <h5>Addiction When Gambling Becomes A Problem</h5>
                     </a>
                     <p>
@@ -69,7 +31,7 @@
                         <img class="img-fluid" src="img/xb2.jpg.pagespeed.ic.QjexspYIft.jpg" alt="">
                     </div>
                     <p class="meta">25 April, 2018 | By <a href="#">Mark Wiens</a></p>
-                    <a href="course-details.html">
+                    <a href="course-details.php">
                         <h5>Computer Hardware Desktops And Notebooks</h5>
                     </a>
                     <p>
@@ -82,7 +44,7 @@
                         <img class="img-fluid" src="img/xb3.jpg.pagespeed.ic.Ab0vS_n8xc.jpg" alt="">
                     </div>
                     <p class="meta">25 April, 2018 | By <a href="#">Mark Wiens</a></p>
-                    <a href="course-details.html">
+                    <a href="course-details.php">
                         <h5>Make Myspace Your Best Designed Space</h5>
                     </a>
                     <p>
@@ -95,7 +57,7 @@
                         <img class="img-fluid" src="img/xb4.jpg.pagespeed.ic.KiQB2CraMM.jpg" alt="">
                     </div>
                     <p class="meta">25 April, 2018 | By <a href="#">Mark Wiens</a></p>
-                    <a href="blog-single.html">
+                    <a href="blog-single.php">
                         <h5>Video Games Playing With Imagination</h5>
                     </a>
                     <p>
@@ -108,30 +70,4 @@
     </section>
 
 
-    <footer class="footer-area">
-        <div class="container">
-            <div class="footer-bottom row align-items-center justify-content-between">
-                <p class="footer-text m-0 col-lg-6 col-md-12">
-                    Copyright &copy;
-
-                    <script>document.write(new Date().getFullYear());</script> All rights reserved | By Rejoyce
-                </p>
-                <div class="col-lg-6 col-sm-12 footer-social">
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="js/vendor/jquery-2.2.4.min.js"></script>
-    <script src="../../../cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script
-        src="js/vendor%2c_bootstrap.min.js%2beasing.min.js%2bhoverIntent.js%2bsuperfish.min.js%2bjquery.ajaxchimp.min.js%2bjquery.magnific-popup.min.js%2bjquery.tabs.min.js%2bjquery.nice-se"></script>
-    <script src="js/owl.carousel.min.js%2bmail-script.js%2bmain.js.pagespeed.jc.YzpQbpXt0O.js"></script>
-</body>
-
-
-</html>
+    <?php include "includes/footer.php"; ?>

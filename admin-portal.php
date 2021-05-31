@@ -1,45 +1,5 @@
-<!DOCTYPE html>
-<html lang="zxx" class="no-js">
-
-<head>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="shortcut icon" href="img/fav.html">
-
-    <meta charset="UTF-8">
-
-    <title>UniPortal</title>
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/main-style.css" />
-</head>
-
-<body>
-    <header id="header">
-        <div class="container main-menu">
-            <div class="row align-items-center justify-content-between d-flex">
-                <div id="logo">
-                    <a href="index.html"><img src="img/xlogo.png.pagespeed.ic.IkdGzsW_qc.png" alt="" title="" /></a>
-                </div>
-                <nav id="nav-menu-container">
-                    <ul class="nav-menu">
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="admin-admin.html">Admin</a></li>
-                        <li><a href="admin-students.html">Students</a></li>
-                        <li><a href="admin-groups.html">Groups</a></li>
-                        <li><a href="admin-courses.html">Courses</a></li>
-                        <li><a href="admin-teachers.html">Teachers</a></li>
-                        <li><a href="admin-news.html">News</a></li>
-                        <li>Username (<a href="logout.html">Logout</a>)</li>
-                        
-                        
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
+<?php include "includes/header.php"; ?>
+<?php include "includes/navigation.php"; ?>
 
     <section class="top-category-widget-area pt-90 pb-90 ">
         <div class="container">
@@ -48,7 +8,7 @@
                     <div class="single-cat-widget">
                         <div class="content relative">
                             <div class="overlay overlay-bg"></div>
-                            <a href="admin-admin.html" >
+                            <a href="admin-admin.php" >
                                 <div class="thumb">
                                     <img class="content-image img-fluid d-block mx-auto" src="img/blog/cat-widget1.jpg"
                                         alt="">
@@ -66,7 +26,7 @@
                     <div class="single-cat-widget">
                         <div class="content relative">
                             <div class="overlay overlay-bg"></div>
-                            <a href="admin-students.html" >
+                            <a href="admin-students.php" >
                                 <div class="thumb">
                                     <img class="content-image img-fluid d-block mx-auto" src="img/blog/cat-widget2.jpg"
                                         alt="">
@@ -84,7 +44,7 @@
                     <div class="single-cat-widget">
                         <div class="content relative">
                             <div class="overlay overlay-bg"></div>
-                            <a href="admin-groups.html" >
+                            <a href="admin-groups.php" >
                                 <div class="thumb">
                                     <img class="content-image img-fluid d-block mx-auto" src="img/blog/cat-widget3.jpg"
                                         alt="">
@@ -102,7 +62,7 @@
                     <div class="single-cat-widget">
                         <div class="content relative">
                             <div class="overlay overlay-bg"></div>
-                            <a href="admin-courses.html" >
+                            <a href="admin-courses.php" >
                                 <div class="thumb">
                                     <img class="content-image img-fluid d-block mx-auto" src="img/blog/cat-widget3.jpg"
                                         alt="">
@@ -120,7 +80,7 @@
                     <div class="single-cat-widget">
                         <div class="content relative">
                             <div class="overlay overlay-bg"></div>
-                            <a href="admin-teachers.html" >
+                            <a href="admin-teachers.php" >
                                 <div class="thumb">
                                     <img class="content-image img-fluid d-block mx-auto" src="img/blog/cat-widget3.jpg"
                                         alt="">
@@ -138,7 +98,7 @@
                     <div class="single-cat-widget">
                         <div class="content relative">
                             <div class="overlay overlay-bg"></div>
-                            <a href="admin-news.html" >
+                            <a href="admin-news.php" >
                                 <div class="thumb">
                                     <img class="content-image img-fluid d-block mx-auto" src="img/blog/cat-widget3.jpg"
                                         alt="">
@@ -157,30 +117,4 @@
     </section>
 
 
-    <footer class="footer-area">
-        <div class="container">
-            <div class="footer-bottom row align-items-center justify-content-between">
-                <p class="footer-text m-0 col-lg-6 col-md-12">
-                    Copyright &copy;
-
-                    <script>document.write(new Date().getFullYear());</script> All rights reserved | By Rejoyce
-                </p>
-                <div class="col-lg-6 col-sm-12 footer-social">
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="js/vendor/jquery-2.2.4.min.js"></script>
-    <script src="../../../cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script
-        src="js/vendor%2c_bootstrap.min.js%2beasing.min.js%2bhoverIntent.js%2bsuperfish.min.js%2bjquery.ajaxchimp.min.js%2bjquery.magnific-popup.min.js%2bjquery.tabs.min.js%2bjquery.nice-se"></script>
-    <script src="js/owl.carousel.min.js%2bmail-script.js%2bmain.js.pagespeed.jc.YzpQbpXt0O.js"></script>
-</body>
-
-
-</html>
+    <?php include "includes/footer.php"; ?>
