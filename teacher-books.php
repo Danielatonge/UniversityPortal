@@ -9,12 +9,12 @@
                         <h3 class="mb-30">Add Book</h3>
                         <form action="#">
                             <div class="mt-10">
-                                <input type="text" name="book_name" placeholder="Book Name"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Book Name'" required
+                                <input type="text" name="book_title" placeholder="Book Title"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Book Title'" required
                                     class="single-input">
                             </div>
                             <div class="mt-10">
-                                <input type="file" name="preview" placeholder="Picture Preview"
+                                <input type="file" name="book_preview" placeholder="Picture Preview"
                                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Picture Preview'"
                                     required class="single-input">
                             </div>
@@ -29,7 +29,7 @@
                             </div>
 
                             <div class="mt-10">
-                                <textarea class="single-textarea" placeholder="Message" onfocus="this.placeholder = ''"
+                                <textarea class="single-textarea" name="book_message" placeholder="Message" onfocus="this.placeholder = ''"
                                     onblur="this.placeholder = 'Message'" required></textarea>
                             </div>
                             <div class="mt-10 text-right">
