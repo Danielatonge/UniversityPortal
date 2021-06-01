@@ -14,5 +14,10 @@
     $con = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
     define('SITENAME', 'UniPortal', false);
+    define('SITESUBTITLE', '&nbsp;&nbsp;&nbsp;', false);
+	define('POSTSPERPAGE', 10);
+	define('AUTHOR', 'Rejoyce', false);
+	define('TIMEOUT', 120);
+	define('HASHCOST', 12);
     define('TZ', 'America/Los_Angeles');
 ?>

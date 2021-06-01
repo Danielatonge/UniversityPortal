@@ -1,5 +1,5 @@
 <!-- only 'Admin' can access this page -->
-<?php if($_SESSION['role'] != 'admin'): ?>
+<?php if($_SESSION['role'] == 'admin'): ?>
 	<h2>Sorry! You are not authorized to use this page.</h2>
 <?php else:?>
 
@@ -7,15 +7,15 @@
             // -------------------- if 'Add User' is submitted -------------------
             if(isset($_POST['add_admin_submit'])) {
                 // get all input data
-                $user_uname				= mysqli_real_escape_string($con, $_POST['user_name']);
+                $user_uname				= mysqli_real_escape_string($con, $_POST['user_uname']);
                 $user_number            = mysqli_real_escape_string($con, $_POST['user_number']);
                 $user_email				= mysqli_real_escape_string($con, $_POST['user_email']);
                 $user_email_val		    = filter_var($user_email, FILTER_VALIDATE_EMAIL);
                 $user_pass				= mysqli_real_escape_string($con, $_POST['user_pass']);
-                $user_image				= $_FILES['user_image']['name'];
+                $user_image				= ""; //$_FILES['user_image']['name'];
                 
                 if($user_image == "") {
-                    $user_image = 'default.png';
+                    $user_image = 'default.jpg';
                 }		
                 
                 $image_tmp = $_FILES['user_image']['tmp_name'];
@@ -38,7 +38,7 @@
                     $div_msg = 'Sorry, that username is already in use. Please choose another.';
                 } else { 
                     // encrypt password (see documentation on php.net)		
-                    $options =['cost'=>HASHCOST];
+                    $options =['cost' => HASHCOST];
                     $user_pass = password_hash($user_pass, PASSWORD_BCRYPT, $options);	
                             
                     move_uploaded_file($image_tmp, "../../img/$user_image");
@@ -63,8 +63,10 @@
             // start with a blank form
             } else {
                 $user_uname = '';
+                $user_number = '';
                 $user_email = '';
                 $user_pass = '';
+                $user_role = 'admin';
             }
 ?>
 
@@ -72,6 +74,7 @@
         // if 'Clear Form' button is pressed
         if(isset($_POST['clearform'])) {
             $user_uname = '';
+            $user_number = '';
             $user_email = '';
             $user_pass = '';
         }
@@ -86,17 +89,17 @@
 
                 <input type="phone" class="form-control mt-10" name="user_number" placeholder="Phone Number"
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone Number'" value="<?php echo $user_number; ?>">
-                <input type="email" class="form-control mt-10" name="email" placeholder="Email Address"
+                <input type="email" class="form-control mt-10" name="user_email" placeholder="Email Address"
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'" value="<?php echo $user_email; ?>">
-                <input type="password" class="form-control mt-10" name="password" placeholder="Password"
+                <input type="password" class="form-control mt-10" name="user_pass" placeholder="Password"
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" value="<?php echo $user_pass; ?>">
 
-                <button type="submit" name="add_admin_submit" class="primary-btn text-uppercase mt-10" >Add</button>
+                <button type="submit" name="add_admin_submit" class="primary-btn text-uppercase mt-10">Add</button>
+                <a href="admin-admin.php" class="genric-btn info text-uppercase mt-10 radius">Manage</a>
             </form>
 
         </div>
         <div class="col-lg-4 col-md-4">
-            <h4><a href="admin-admin.php">Manage Admin</a></h4>
             <?php if(!empty($div_msg)):?>
                 <div class="alert alert-<?php echo $div_class;?>">
                     <?php echo $div_msg;?>
