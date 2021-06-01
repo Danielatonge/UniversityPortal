@@ -9,7 +9,7 @@ USE `uni_portal`;
 --
 
 CREATE TABLE `news` (
-  `news_id` int(3) NOT NULL,
+  `news_id` int(3) NOT NULL AUTO_INCREMENT,
   `news_date` datetime NOT NULL,
   `news_title` varchar(100) NOT NULL,
   `news_content` text NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE `news` (
 -- Table structure for table `users`
 --
 CREATE TABLE `users` (
-  `user_id` int(3) NOT NULL,
+  `user_id` int(3) NOT NULL AUTO_INCREMENT,
   `user_uname` varchar(50) NOT NULL,
   `user_pass` varchar(255) NOT NULL,
   `user_email` varchar(100) NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE `users` (
   `user_date` datetime NOT NULL,
   PRIMARY KEY (`user_id`)
 );
-
+INSERT INTO `users` (`user_id`, `user_uname`, `user_pass`, `user_email`, `user_image`, `user_role`, `user_date`) VALUES ('1', 'dan', '123', 'dan@gmail.com', 'default.png', 'admin', '2021-06-01 13:16:53');
 
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `users` (
 --
 
 CREATE TABLE `courses` (
-  `course_id` int(3) NOT NULL,
+  `course_id` int(3) NOT NULL AUTO_INCREMENT,
   `user_id` int(3) NOT NULL,
   PRIMARY KEY (`course_id`),
   FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`)
@@ -52,7 +52,7 @@ CREATE TABLE `courses` (
 --
 
 CREATE TABLE `groups` (
-  `group_id` int(3) NOT NULL,
+  `group_id` int(3) NOT NULL AUTO_INCREMENT,
   `user_id` int(3) NOT NULL,
   `group_name` varchar(10) NOT NULL,
   PRIMARY KEY (`group_id`),
@@ -65,7 +65,7 @@ CREATE TABLE `groups` (
 -- Table structure for table `session`
 --
 CREATE TABLE `sessions` (
-  `session_id` int(11) NOT NULL,
+  `session_id` int(11) NOT NULL AUTO_INCREMENT,
   `session` varchar(255) NOT NULL,
   `time` int(11) NOT NULL,
   PRIMARY KEY (`session_id`)
@@ -77,7 +77,7 @@ CREATE TABLE `sessions` (
 --
 
 CREATE TABLE `books` (
-  `book_id` int(3) NOT NULL,
+  `book_id` int(3) NOT NULL AUTO_INCREMENT,
   `course_id` int(3),
   `book_title` varchar(100) NOT NULL,
   `book_author` varchar(100) NOT NULL,
@@ -94,7 +94,7 @@ CREATE TABLE `books` (
 --
 
 CREATE TABLE `grades` (
-  `grade_id` int(3) NOT NULL,
+  `grade_id` int(3) NOT NULL AUTO_INCREMENT,
   `group_id` int(3) NOT NULL,
   `user_id` int(3) NOT NULL,
   `grade_practical` int(4) NOT NULL,
