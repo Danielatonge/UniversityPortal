@@ -1,4 +1,9 @@
+<?php
+// turn on output buffering in order to use header()
+	ob_start();
+?>
 <?php include 'database.php'; ?>
+<?php include 'functions.php'; ?>
 <?php session_start(); ?>
 
 <!DOCTYPE html>

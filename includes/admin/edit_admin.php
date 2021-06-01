@@ -83,15 +83,15 @@
                 <!-- hidden field for user_id -->
                 <input type="hidden" name="user_id" value="<?php echo $edit_user['user_id'];?>">
 
-                <input type="hidden" class="form-control mt-10" name="user_uname" placeholder="Username"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" value="<?php echo $edit_user['user_uname'];?>">
+                <input type="text" class="form-control mt-10" name="user_uname" placeholder="Username"
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" value="<?php echo $edit_user['user_uname'];?>" >
 
                 <input type="phone" class="form-control mt-10" name="user_number" placeholder="Phone Number"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone Number'" value="<?php echo $user_number; ?>">
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone Number'" value="">
                 <input type="email" class="form-control mt-10" name="user_email" placeholder="Email Address"
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'" value="<?php echo $edit_user['user_email']; ?>">
                 <input type="password" class="form-control mt-10" name="user_pass" placeholder="Password"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" value="<?php echo $user_pass; ?>">
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" value="">
 
                 <button type="submit" name="edit_admin_submit" class="primary-btn text-uppercase mt-10">Update</button>
                 <a href="admin-admin.php" class="genric-btn info text-uppercase mt-10 radius">Manage</a>

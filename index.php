@@ -7,7 +7,7 @@
             <div class="row justify-content-between align-items-center">
                 <div class="col-lg-6 col-md-6 search-course-left">
                     <h1 class="text-white">
-                        Rejoyce Uni System <br>
+                        Rejoice Uni System <br>
                         Flexible portal for all!
                     </h1>
                     <p>
@@ -39,14 +39,14 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 search-course-right section-gap">
-                    <form class="form-wrap" action="#">
+                    <form class="form-wrap" action="includes/login.php" method="post" enctype="multipart/form-data">
                         <h4 class="text-white pb-20 text-center mb-30">Log into your portal</h4>
-                        <input type="text" class="form-control" name="name" placeholder="Username"
+                        <input type="text" class="form-control" name="user_uname" placeholder="Username"
                             onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
-                        <input type="password" class="form-control" name="password" placeholder="Password"
+                        <input type="password" class="form-control" name="user_pass" placeholder="Password"
                             onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
 
-                        <button class="primary-btn text-uppercase">Sign In</button>
+                        <button type="submit" name="login_submit" class="primary-btn text-uppercase">Sign In</button>
                     </form>
                 </div>
             </div>

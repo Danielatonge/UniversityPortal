@@ -1,5 +1,5 @@
 <!-- only 'Admin' can access this page -->
-<?php if($_SESSION['role'] == 'admin'): ?>
+<?php if($_SESSION['role'] != 'admin'): ?>
 	<h2>Sorry! You are not authorized to use this page.</h2>
 <?php else:?>
 
