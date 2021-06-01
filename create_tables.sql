@@ -28,11 +28,12 @@ CREATE TABLE `users` (
   `user_pass` varchar(255) NOT NULL,
   `user_email` varchar(100) NOT NULL,
   `user_image` varchar(50) NOT NULL DEFAULT 'default.png',
+  `user_number` varchar(15), 
   `user_role` varchar(50) NOT NULL,
   `user_date` datetime NOT NULL,
   PRIMARY KEY (`user_id`)
 );
-INSERT INTO `users` (`user_uname`, `user_pass`, `user_email`, `user_image`, `user_role`, `user_date`) VALUES ('dan', '$2y$12$wp3q6cUbtDKh3E55K6hy4OvO.q8mzBT0SgeE/Ldl954NYYGuqzcnq', 'dan@gmail.com', 'default.png', 'admin', '2021-06-01 13:16:53');
+INSERT INTO `users` (`user_uname`, `user_pass`, `user_email`, `user_number`, `user_image`, `user_role`, `user_date`) VALUES ('dan', '$2y$12$wp3q6cUbtDKh3E55K6hy4OvO.q8mzBT0SgeE/Ldl954NYYGuqzcnq', 'dan@gmail.com', '+897868763', 'default.png', 'admin', '2021-06-01 13:16:53');
 
 
 --
@@ -55,8 +56,7 @@ CREATE TABLE `courses` (
 CREATE TABLE `groups` (
   `group_id` int(3) NOT NULL AUTO_INCREMENT,
   `group_name` varchar(10) NOT NULL,
-  PRIMARY KEY (`group_id`),
-  FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`)
+  PRIMARY KEY (`group_id`)
 );
 
 

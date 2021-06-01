@@ -7,11 +7,9 @@
                 $user_email				= mysqli_real_escape_string($con, $_POST['user_email']);
                 $user_email_val		    = filter_var($user_email, FILTER_VALIDATE_EMAIL);
                 $user_pass				= mysqli_real_escape_string($con, $_POST['user_pass']);
-                $user_image				= ""; //$_FILES['user_image']['name'];
+                $user_image				= $_FILES['user_image']['name'];
                 
-                if($user_image == "") {
-                    $user_image = 'default.jpg';
-                }		
+                if($user_image == "") { $user_image = 'default.jpg';}		
                 
                 $image_tmp = $_FILES['user_image']['tmp_name'];
                 $user_role = 'admin';
@@ -22,7 +20,7 @@
             
                 $r = mysqli_query($con, $q);
                 
-                if(empty($user_uname) || empty($user_email) || empty($user_pass) ) {
+                if(empty($user_uname) || empty($user_email) || empty($user_pass) || empty($user_number) ) {
                     $div_class = 'danger';
                     $div_msg = 'Please fill in all required fields.';
                 } elseif(!$user_email_val) {
@@ -36,14 +34,12 @@
                     $options =['cost' => HASHCOST];
                     $user_pass = password_hash($user_pass, PASSWORD_BCRYPT, $options);	
                             
-                    move_uploaded_file($image_tmp, "../../img/$user_image");
+                    move_uploaded_file($image_tmp, "img/$user_image");
                     
                     $q = "UPDATE users SET user_uname = '$user_uname', user_pass = '$user_pass',
-                        user_email = '$user_email', user_image = '$user_image', user_role = '$user_role'
+                        user_email = '$user_email', user_number = '$user_number', user_image = '$user_image', user_role = '$user_role'
                         WHERE user_id = $user_id";
 
-                
-                    
                     $result     = mysqli_query($con, $q);
                     
                     $div_info   = confirmQuery($result, 'update');
@@ -80,17 +76,22 @@
             <h3 class="mb-30">Edit Administrator</h3>
 
             <form class="form-wrap" action="" method="post" enctype="multipart/form-data">
-
+                <input type="hidden" name="user_id" value="<?php echo $edit_user['user_id'];?>">    
                 <input type="text" class="form-control mt-10" name="user_uname" placeholder="Username"
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" value="<?php echo $edit_user['user_uname'];?>" >
 
                 <input type="phone" class="form-control mt-10" name="user_number" placeholder="Phone Number"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone Number'" value="">
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone Number'" value="<?php echo $edit_user['user_number'];?>" >
                 <input type="email" class="form-control mt-10" name="user_email" placeholder="Email Address"
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'" value="<?php echo $edit_user['user_email']; ?>">
-                <input type="password" class="form-control mt-10" name="user_pass" placeholder="Password"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" value="">
+                <input type="password" class="form-control mt-10" name="user_pass" placeholder="Enter new Password"
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter new Password'" >
 
+                <div class="mt-20">
+                    <h5>Upload Picture</h5>
+                    <input type="file" name="user_image" placeholder="User Photo" onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'User Photo'" required class="single-input" >
+                </div>
                 <button type="submit" name="edit_admin_submit" class="primary-btn text-uppercase mt-10">Update</button>
                 <a href="admin-admin.php" class="genric-btn info text-uppercase mt-10 radius">Manage</a>
             </form>

@@ -12,7 +12,7 @@
                 $user_email				= mysqli_real_escape_string($con, $_POST['user_email']);
                 $user_email_val		    = filter_var($user_email, FILTER_VALIDATE_EMAIL);
                 $user_pass				= mysqli_real_escape_string($con, $_POST['user_pass']);
-                $user_image				= ""; //$_FILES['user_image']['name'];
+                $user_image				= $_FILES['user_image']['name'];
                 
                 if($user_image == "") {
                     $user_image = 'default.jpg';
@@ -41,12 +41,12 @@
                     $options =['cost' => HASHCOST];
                     $user_pass = password_hash($user_pass, PASSWORD_BCRYPT, $options);	
                             
-                    move_uploaded_file($image_tmp, "../../img/$user_image");
+                    move_uploaded_file($image_tmp, "img/$user_image");
                     
                     $q = "INSERT INTO users
-                            (user_uname, user_pass, user_email,
+                            (user_uname, user_pass, user_email, user_number,
                             user_image, user_role, user_date)
-                            VALUES ('$user_uname', '$user_pass', '$user_email', 
+                            VALUES ('$user_uname', '$user_pass', '$user_email', '$user_number',
                             '$user_image', '$user_role', now())";
                     
                     $result     = mysqli_query($con, $q);
@@ -81,23 +81,29 @@
                 <input type="email" class="form-control mt-10" name="user_email" placeholder="Email Address"
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'" value="<?php echo $user_email; ?>">
 
-                    <div class="">
-                        <h5 class="mt-10 mb-10">Group</h5>
-                        <div class="default-select" id="default-select">
-                            <select>
-                                <option value="1">231</option>
-                                <option value="1">432</option>
-                                <option value="1">234</option>
-                                <option value="1">434</option>
-                            </select>
-                        </div>
+                <div class="">
+                    <h5 class="mt-10 mb-10">Group</h5>
+                    <div class="default-select" id="default-select">
+                        <select>
+                            <option value="1">231</option>
+                            <option value="1">432</option>
+                            <option value="1">234</option>
+                            <option value="1">434</option>
+                        </select>
                     </div>
+                </div>
+
+                <div class="">
+                    <h5>Upload Picture</h5>
+                    <input type="file" name="user_image" placeholder="User Photo" onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'User Photo'" required class="single-input" value="<?php echo $user_image; ?>">
+                </div>
 
                 <input type="password" class="form-control mt-10" name="user_pass" placeholder="Password"
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" value="<?php echo $user_pass; ?>">
 
                 <button type="submit" name="add_student_submit" class="primary-btn text-uppercase mt-10">Add</button>
-                <a href="admin-student.php" class="genric-btn info text-uppercase mt-10 radius">Manage</a>
+                <a href="admin-students.php" class="genric-btn info text-uppercase mt-10 radius">Manage</a>
             </form>
 
         </div>

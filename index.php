@@ -39,6 +39,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 search-course-right section-gap">
+                    <?php if(!isset($_SESSION['role'])): ?>
                     <form class="form-wrap" action="includes/login.php" method="post" enctype="multipart/form-data">
                         <h4 class="text-white pb-20 text-center mb-30">Log into your portal</h4>
                         <input type="text" class="form-control" name="user_uname" placeholder="Username"
@@ -48,6 +49,9 @@
 
                         <button type="submit" name="login_submit" class="primary-btn text-uppercase">Sign In</button>
                     </form>
+                    <?php else: ?>
+                    <h4 class="text-white pb-20 text-center mb-30">User Logged In. (Log Out If needed)</h4>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
