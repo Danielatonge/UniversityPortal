@@ -32,7 +32,7 @@ CREATE TABLE `users` (
   `user_date` datetime NOT NULL,
   PRIMARY KEY (`user_id`)
 );
-INSERT INTO `users` (`user_id`, `user_uname`, `user_pass`, `user_email`, `user_image`, `user_role`, `user_date`) VALUES ('1', 'dan', '123', 'dan@gmail.com', 'default.png', 'admin', '2021-06-01 13:16:53');
+INSERT INTO `users` (`user_uname`, `user_pass`, `user_email`, `user_image`, `user_role`, `user_date`) VALUES ('dan', '$2y$12$wp3q6cUbtDKh3E55K6hy4OvO.q8mzBT0SgeE/Ldl954NYYGuqzcnq', 'dan@gmail.com', 'default.png', 'admin', '2021-06-01 13:16:53');
 
 
 --
