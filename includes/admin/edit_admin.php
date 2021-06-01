@@ -74,14 +74,12 @@
                 }
             }
             
-?>
+        ?>
 
         <div class="col-lg-8 col-md-8">
             <h3 class="mb-30">Edit Administrator</h3>
 
             <form class="form-wrap" action="" method="post" enctype="multipart/form-data">
-                <!-- hidden field for user_id -->
-                <input type="hidden" name="user_id" value="<?php echo $edit_user['user_id'];?>">
 
                 <input type="text" class="form-control mt-10" name="user_uname" placeholder="Username"
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" value="<?php echo $edit_user['user_uname'];?>" >

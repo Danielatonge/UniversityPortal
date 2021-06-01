@@ -41,6 +41,7 @@ INSERT INTO `users` (`user_uname`, `user_pass`, `user_email`, `user_image`, `use
 
 CREATE TABLE `courses` (
   `course_id` int(3) NOT NULL AUTO_INCREMENT,
+  `course_name` varchar(20) NOT NULL,
   `user_id` int(3) NOT NULL,
   PRIMARY KEY (`course_id`),
   FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`)
@@ -53,7 +54,6 @@ CREATE TABLE `courses` (
 
 CREATE TABLE `groups` (
   `group_id` int(3) NOT NULL AUTO_INCREMENT,
-  `user_id` int(3) NOT NULL,
   `group_name` varchar(10) NOT NULL,
   PRIMARY KEY (`group_id`),
   FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`)

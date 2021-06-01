@@ -19,7 +19,7 @@
                 }		
                 
                 $image_tmp = $_FILES['user_image']['tmp_name'];
-                $user_role = 'admin';
+                $user_role = 'student';
                 
                 // check if username is already in use in the users table
                 $q = "SELECT users.user_uname FROM users 
@@ -57,6 +57,7 @@
                     
                     // reset to a blank form
                     $user_uname = '';
+                    $user_number = '';
                     $user_email = '';
                     $user_pass = '';
                 }
@@ -66,23 +67,11 @@
                 $user_number = '';
                 $user_email = '';
                 $user_pass = '';
-                $user_role = 'admin';
             }
 ?>
 
-<?php
-        // if 'Clear Form' button is pressed
-        if(isset($_POST['clearform'])) {
-            $user_uname = '';
-            $user_number = '';
-            $user_email = '';
-            $user_pass = '';
-        }
-?>
-
         <div class="col-lg-8 col-md-8">
-            <h3 class="mb-30">Add Administrator</h3>
-
+            <h3 class="mb-30">Add Student</h3>
             <form class="form-wrap" action="" method="post" enctype="multipart/form-data">
                 <input type="text" class="form-control mt-10" name="user_uname" placeholder="Username"
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" value="<?php echo $user_uname; ?>">
@@ -91,11 +80,24 @@
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone Number'" value="<?php echo $user_number; ?>">
                 <input type="email" class="form-control mt-10" name="user_email" placeholder="Email Address"
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'" value="<?php echo $user_email; ?>">
+
+                    <div class="">
+                        <h5 class="mt-10 mb-10">Group</h5>
+                        <div class="default-select" id="default-select">
+                            <select>
+                                <option value="1">231</option>
+                                <option value="1">432</option>
+                                <option value="1">234</option>
+                                <option value="1">434</option>
+                            </select>
+                        </div>
+                    </div>
+
                 <input type="password" class="form-control mt-10" name="user_pass" placeholder="Password"
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" value="<?php echo $user_pass; ?>">
 
-                <button type="submit" name="add_admin_submit" class="primary-btn text-uppercase mt-10">Add</button>
-                <a href="admin-admin.php" class="genric-btn info text-uppercase mt-10 radius">Manage</a>
+                <button type="submit" name="add_student_submit" class="primary-btn text-uppercase mt-10">Add</button>
+                <a href="admin-student.php" class="genric-btn info text-uppercase mt-10 radius">Manage</a>
             </form>
 
         </div>

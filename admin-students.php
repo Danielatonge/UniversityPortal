@@ -8,11 +8,11 @@
                     <div class="col-lg-8 col-md-8">
                         <h3 class="mb-30">Add Student</h3>
                         <form class="form-wrap" action="#">
-                            <input type="text" class="form-control mt-10" name="name" placeholder="Username"
+                            <input type="text" class="form-control mt-10" name="user_uname" placeholder="Username"
                                 onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'">
-                            <input type="phone" class="form-control mt-10" name="phone" placeholder="Phone Number"
+                            <input type="phone" class="form-control mt-10" name="user_number" placeholder="Phone Number"
                                 onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone Number'">
-                            <input type="email" class="form-control mt-10" name="email" placeholder="Email Address"
+                            <input type="email" class="form-control mt-10" name="user_email" placeholder="Email Address"
                                 onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'">
 
                             <div class="">
@@ -27,7 +27,7 @@
                                 </div>
                             </div>
 
-                            <input type="password" class="form-control mt-10" name="password" placeholder="Password"
+                            <input type="password" class="form-control mt-10" name="user_pass" placeholder="Password"
                                 onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
 
                             <button class="primary-btn text-uppercase mt-10">Add</button>

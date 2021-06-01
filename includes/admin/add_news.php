@@ -64,7 +64,7 @@
                 </div>
                 <div class="mt-10">
                     <textarea class="single-textarea" name="news_content" placeholder="Content" onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Content'" required><?php echo $news_image; ?></textarea>
+                        onblur="this.placeholder = 'Content'" required><?php echo $news_content; ?></textarea>
                 </div>
                 <button type="submit" title="add_news_submit" class="primary-btn text-uppercase mt-10">Add</button>
                 <a href="admin-news.php" class="genric-btn info text-uppercase mt-10 radius">Manage</a>
