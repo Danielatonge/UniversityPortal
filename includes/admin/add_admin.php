@@ -70,16 +70,6 @@
             }
 ?>
 
-<?php
-        // if 'Clear Form' button is pressed
-        if(isset($_POST['clearform'])) {
-            $user_uname = '';
-            $user_number = '';
-            $user_email = '';
-            $user_pass = '';
-        }
-?>
-
         <div class="col-lg-8 col-md-8">
             <h3 class="mb-30">Add Administrator</h3>
 

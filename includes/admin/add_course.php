@@ -4,50 +4,30 @@
 <?php else:?>
 
 <?php
-            // -------------------- if 'Add User' is submitted -------------------
-            if(isset($_POST['add_admin_submit'])) {
+            // -------------------- if 'Add course' is submitted -------------------
+            if(isset($_POST['add_course_submit'])) {
                 // get all input data
-                $user_uname				= mysqli_real_escape_string($con, $_POST['user_uname']);
-                $user_number            = mysqli_real_escape_string($con, $_POST['user_number']);
-                $user_email				= mysqli_real_escape_string($con, $_POST['user_email']);
-                $user_email_val		    = filter_var($user_email, FILTER_VALIDATE_EMAIL);
-                $user_pass				= mysqli_real_escape_string($con, $_POST['user_pass']);
-                $user_image				= ""; //$_FILES['user_image']['name'];
+                $course_name				= mysqli_real_escape_string($con, $_POST['course_name']);
+                $course_teacher            = mysqli_real_escape_string($con, $_POST['course_teacher']);
                 
-                if($user_image == "") {
-                    $user_image = 'default.jpg';
-                }		
                 
-                $image_tmp = $_FILES['user_image']['tmp_name'];
-                $user_role = 'admin';
-                
-                // check if username is already in use in the users table
-                $q = "SELECT users.user_uname FROM users 
-                            WHERE user_uname = '$user_uname'";
+                // check if coursename is already in use in the courses table
+                $q = "SELECT courses.course_name FROM courses 
+                            WHERE course_name = '$course_name'";
             
                 $r = mysqli_query($con, $q);
                 
-                if(empty($user_uname) || empty($user_email) || empty($user_pass) ) {
+                if(empty($course_name) || empty($course_teacher) ) {
                     $div_class = 'danger';
                     $div_msg = 'Please fill in all required fields.';
-                } elseif(!$user_email_val) {
-                    $div_class = 'danger';
-                    $div_msg = 'Please enter a valid email address.';
                 } elseif(mysqli_num_rows($r) > 0) {
                     $div_class = 'danger';
-                    $div_msg = 'Sorry, that username is already in use. Please choose another.';
+                    $div_msg = 'Sorry, that coursename is already in use. Please choose another.';
                 } else { 
-                    // encrypt password (see documentation on php.net)		
-                    $options =['cost' => HASHCOST];
-                    $user_pass = password_hash($user_pass, PASSWORD_BCRYPT, $options);	
-                            
-                    move_uploaded_file($image_tmp, "../../img/$user_image");
                     
-                    $q = "INSERT INTO users
-                            (user_uname, user_pass, user_email,
-                            user_image, user_role, user_date)
-                            VALUES ('$user_uname', '$user_pass', '$user_email', 
-                            '$user_image', '$user_role', now())";
+                    $q = "INSERT INTO courses
+                            (course_name, course_teacher)
+                            VALUES ('$course_name', '$course_teacher')";
                     
                     $result     = mysqli_query($con, $q);
                     
@@ -56,48 +36,26 @@
                     $div_msg 	= $div_info['div_msg'];
                     
                     // reset to a blank form
-                    $user_uname = '';
-                    $user_email = '';
-                    $user_pass = '';
+                    $course_name = '';
+                    $course_teacher = '';
                 }
             // start with a blank form
             } else {
-                $user_uname = '';
-                $user_number = '';
-                $user_email = '';
-                $user_pass = '';
-                $user_role = 'admin';
+                $course_name = '';
+                $course_teacher = '';
             }
 ?>
 
-<?php
-        // if 'Clear Form' button is pressed
-        if(isset($_POST['clearform'])) {
-            $user_uname = '';
-            $user_number = '';
-            $user_email = '';
-            $user_pass = '';
-        }
-?>
-
         <div class="col-lg-8 col-md-8">
-            <h3 class="mb-30">Add Administrator</h3>
-
+            <h3 class="mb-30">Add Course</h3>
             <form class="form-wrap" action="" method="post" enctype="multipart/form-data">
-                <input type="text" class="form-control mt-10" name="user_uname" placeholder="Username"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" value="<?php echo $user_uname; ?>">
-
-                <input type="phone" class="form-control mt-10" name="user_number" placeholder="Phone Number"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone Number'" value="<?php echo $user_number; ?>">
-                <input type="email" class="form-control mt-10" name="user_email" placeholder="Email Address"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'" value="<?php echo $user_email; ?>">
-                <input type="password" class="form-control mt-10" name="user_pass" placeholder="Password"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" value="<?php echo $user_pass; ?>">
-
-                <button type="submit" name="add_admin_submit" class="primary-btn text-uppercase mt-10">Add</button>
-                <a href="admin-admin.php" class="genric-btn info text-uppercase mt-10 radius">Manage</a>
+                <input type="text" class="form-control mt-10" name="course_name" placeholder="Course Name"
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Course Name'" value="<?php echo $course_name; ?>">
+                <input type="text" class="form-control mt-10" name="course_teacher" placeholder="Course Instructor"
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Course Instructor'" value="<?php echo $course_teacher; ?>">
+                <button type="submit" name="add_course_submit" class="primary-btn text-uppercase mt-10">Add</button>
+                <a href="admin-courses.php" class="genric-btn info text-uppercase mt-10 radius">Manage</a>
             </form>
-
         </div>
         <div class="col-lg-4 col-md-4">
             <?php if(!empty($div_msg)):?>

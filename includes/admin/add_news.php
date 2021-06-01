@@ -4,50 +4,31 @@
 <?php else:?>
 
 <?php
-            // -------------------- if 'Add User' is submitted -------------------
-            if(isset($_POST['add_admin_submit'])) {
+            // -------------------- if 'Add news' is submitted -------------------
+            if(isset($_POST['add_news_submit'])) {
                 // get all input data
-                $user_uname				= mysqli_real_escape_string($con, $_POST['user_uname']);
-                $user_number            = mysqli_real_escape_string($con, $_POST['user_number']);
-                $user_email				= mysqli_real_escape_string($con, $_POST['user_email']);
-                $user_email_val		    = filter_var($user_email, FILTER_VALIDATE_EMAIL);
-                $user_pass				= mysqli_real_escape_string($con, $_POST['user_pass']);
-                $user_image				= ""; //$_FILES['user_image']['name'];
+                $news_title				= mysqli_real_escape_string($con, $_POST['news_title']);
+                $news_image            = mysqli_real_escape_string($con, $_POST['news_image']);
+                $news_content            = mysqli_real_escape_string($con, $_POST['news_content']);
                 
-                if($user_image == "") {
-                    $user_image = 'default.jpg';
-                }		
                 
-                $image_tmp = $_FILES['user_image']['tmp_name'];
-                $user_role = 'admin';
-                
-                // check if username is already in use in the users table
-                $q = "SELECT users.user_uname FROM users 
-                            WHERE user_uname = '$user_uname'";
+                // check if newstitle is already in use in the news table
+                $q = "SELECT news.news_title FROM news 
+                            WHERE news_title = '$news_title'";
             
                 $r = mysqli_query($con, $q);
                 
-                if(empty($user_uname) || empty($user_email) || empty($user_pass) ) {
+                if(empty($news_title) || empty($news_image) || empty($news_content) ) {
                     $div_class = 'danger';
                     $div_msg = 'Please fill in all required fields.';
-                } elseif(!$user_email_val) {
-                    $div_class = 'danger';
-                    $div_msg = 'Please enter a valid email address.';
                 } elseif(mysqli_num_rows($r) > 0) {
                     $div_class = 'danger';
-                    $div_msg = 'Sorry, that username is already in use. Please choose another.';
+                    $div_msg = 'Sorry, that newstitle is already in use. Please choose another.';
                 } else { 
-                    // encrypt password (see documentation on php.net)		
-                    $options =['cost' => HASHCOST];
-                    $user_pass = password_hash($user_pass, PASSWORD_BCRYPT, $options);	
-                            
-                    move_uploaded_file($image_tmp, "../../img/$user_image");
                     
-                    $q = "INSERT INTO users
-                            (user_uname, user_pass, user_email,
-                            user_image, user_role, user_date)
-                            VALUES ('$user_uname', '$user_pass', '$user_email', 
-                            '$user_image', '$user_role', now())";
+                    $q = "INSERT INTO news
+                            (news_date, news_title,news_content, news_image)
+                            VALUES ( now(), '$news_title', '$news_content','$news_image')";
                     
                     $result     = mysqli_query($con, $q);
                     
@@ -56,48 +37,38 @@
                     $div_msg 	= $div_info['div_msg'];
                     
                     // reset to a blank form
-                    $user_uname = '';
-                    $user_email = '';
-                    $user_pass = '';
+                    $news_title = '';
+                    $news_image = '';
+                    $news_content = '';
                 }
             // start with a blank form
             } else {
-                $user_uname = '';
-                $user_number = '';
-                $user_email = '';
-                $user_pass = '';
-                $user_role = 'admin';
+                $news_title = '';
+                $news_image = '';
+                $news_content = '';
             }
 ?>
 
-<?php
-        // if 'Clear Form' button is pressed
-        if(isset($_POST['clearform'])) {
-            $user_uname = '';
-            $user_number = '';
-            $user_email = '';
-            $user_pass = '';
-        }
-?>
-
         <div class="col-lg-8 col-md-8">
-            <h3 class="mb-30">Add Administrator</h3>
-
+            <h3 class="mb-30">Add news</h3>
             <form class="form-wrap" action="" method="post" enctype="multipart/form-data">
-                <input type="text" class="form-control mt-10" name="user_uname" placeholder="Username"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" value="<?php echo $user_uname; ?>">
-
-                <input type="phone" class="form-control mt-10" name="user_number" placeholder="Phone Number"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone Number'" value="<?php echo $user_number; ?>">
-                <input type="email" class="form-control mt-10" name="user_email" placeholder="Email Address"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'" value="<?php echo $user_email; ?>">
-                <input type="password" class="form-control mt-10" name="user_pass" placeholder="Password"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" value="<?php echo $user_pass; ?>">
-
-                <button type="submit" name="add_admin_submit" class="primary-btn text-uppercase mt-10">Add</button>
-                <a href="admin-admin.php" class="genric-btn info text-uppercase mt-10 radius">Manage</a>
+                <div class="mt-10">
+                    <input type="text" name="news_title" placeholder="News Title"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'News Title'" required
+                        class="single-input"  value="<?php echo $news_title; ?>">
+                </div>
+                <div class="mt-10">
+                    <input type="file" name="news_image" placeholder="News Image"
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'News Image'" required
+                        class="single-input"  value="<?php echo $news_image; ?>">
+                </div>
+                <div class="mt-10">
+                    <textarea class="single-textarea" name="news_content" placeholder="Content" onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'Content'" required><?php echo $news_image; ?></textarea>
+                </div>
+                <button type="submit" title="add_news_submit" class="primary-btn text-uppercase mt-10">Add</button>
+                <a href="admin-news.php" class="genric-btn info text-uppercase mt-10 radius">Manage</a>
             </form>
-
         </div>
         <div class="col-lg-4 col-md-4">
             <?php if(!empty($div_msg)):?>
