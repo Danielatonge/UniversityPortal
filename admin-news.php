@@ -9,16 +9,16 @@
                         <h3 class="mb-30">Add News</h3>
                         <form action="#">
                             <div class="mt-10">
-                                <input type="text" name="lecture_name" placeholder="News Title"
+                                <input type="text" name="news_title" placeholder="News Title"
                                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'News Title'" required
                                     class="single-input">
                             </div>
                             <div class="mt-10">
-                                <input type="file" name="news_photo" placeholder="News Photo" onfocus="this.placeholder = ''"
+                                <input type="file" name="news_image" placeholder="News Photo" onfocus="this.placeholder = ''"
                                     onblur="this.placeholder = 'News Photo'" required class="single-input">
                             </div>
                             <div class="mt-10">
-                                <textarea class="single-textarea" placeholder="Content" onfocus="this.placeholder = ''"
+                                <textarea class="single-textarea" name="news_content" placeholder="Content" onfocus="this.placeholder = ''"
                                     onblur="this.placeholder = 'Content'" required></textarea>
                             </div>
                             <div class="mt-10 text-right">
