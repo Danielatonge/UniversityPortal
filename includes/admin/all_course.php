@@ -46,7 +46,6 @@
                 </div>
                 <?php
                     $q =    "SELECT * FROM courses";
-
                     $courses = mysqli_query($con, $q);
                 ?>
                 <?php foreach($courses as $course):?>
@@ -54,7 +53,15 @@
                 <div class="table-row">
                     <div class="serial"><?php echo $course['course_id'];?></div>
                     <div class="visit"><?php echo $course['course_name'];?></div>
-                    <div class="visit"><?php echo $course['course_teacher'];?></div>
+
+                    <?php
+                        $user_id = $course['user_id'];
+                        $q =    "SELECT * FROM users WHERE users.user_id = $user_id";
+                        $result = mysqli_query($con, $q);
+                        $teacher = mysqli_fetch_array($result);
+                    ?>
+
+                    <div class="visit"><?php echo $teacher['user_uname'];?></div>
                     <div class="country">
                         <a href="admin-courses.php?source=edit_course&id=<?php echo $course['course_id'];?>" 
                         class="genric-btn primary circle small" role="button">Edit

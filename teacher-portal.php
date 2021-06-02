@@ -8,7 +8,7 @@
                     <div class="single-cat-widget">
                         <div class="content relative">
                             <div class="overlay overlay-bg"></div>
-                            <a href="#" >
+                            <a href="teacher-books.php" >
                                 <div class="thumb">
                                     <img class="content-image img-fluid d-block mx-auto" src="img/blog/cat-widget1.jpg"
                                         alt="">
@@ -26,7 +26,7 @@
                     <div class="single-cat-widget">
                         <div class="content relative">
                             <div class="overlay overlay-bg"></div>
-                            <a href="#" >
+                            <a href="teacher-test.php" >
                                 <div class="thumb">
                                     <img class="content-image img-fluid d-block mx-auto" src="img/blog/cat-widget2.jpg"
                                         alt="">
@@ -44,7 +44,7 @@
                     <div class="single-cat-widget">
                         <div class="content relative">
                             <div class="overlay overlay-bg"></div>
-                            <a href="#" >
+                            <a href="teacher-lectures.php" >
                                 <div class="thumb">
                                     <img class="content-image img-fluid d-block mx-auto" src="img/blog/cat-widget3.jpg"
                                         alt="">
@@ -62,7 +62,7 @@
                     <div class="single-cat-widget">
                         <div class="content relative">
                             <div class="overlay overlay-bg"></div>
-                            <a href="#" >
+                            <a href="teacher-grades.php" >
                                 <div class="thumb">
                                     <img class="content-image img-fluid d-block mx-auto" src="img/blog/cat-widget3.jpg"
                                         alt="">

@@ -19,7 +19,6 @@
             }
         }
 ?>	
-
 <?php
 	// display an alert message from result of $_GET or $_POST;
 	// this row is not displayed if both $_GET and $_POST are not set
@@ -30,9 +29,6 @@
             </div>
         </div>
 <?php endif; ?>
-
-
-    
     <div class="section-top-border col-lg-12 col-md-12">
     <a href="admin-admin.php?source=add_admin" 
     class="genric-btn primary radius mb-10" role="button">Add Admin</a>
@@ -42,6 +38,7 @@
                     <div class="serial">#</div>
                     <div class="visit">Username</div>
                     <div class="visit">Email</div>
+                    <div class="visit">Phone</div>
                     <div class="visit">Image</div>
                     <div class="visit">Reg. Date</div>
                     <div class="country">Actions</div>
@@ -60,6 +57,7 @@
                     <div class="visit"><?php echo $user['user_uname'];?></div>
                     <div class="visit"><?php echo $user['user_email'];?></div>
 
+                    <div class="visit"><?php echo $user['user_number'];?></div>
                     <div class="visit"> <img class="img-responsive" 
                         src="img/<?php echo $user['user_image'];?>" height="72px"	width="72px" alt="image">
                     </div>
@@ -76,11 +74,8 @@
                         </a>
                     </div>
                 </div>
-                
                 <?php endforeach;?>
-
             </div>
         </div>
     </div>
-
 <?php endif; ?>

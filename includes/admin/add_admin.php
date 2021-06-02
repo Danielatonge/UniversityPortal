@@ -69,7 +69,6 @@
                 $user_image = '';
             }
 ?>
-
         <div class="col-lg-8 col-md-8">
             <h3 class="mb-30">Add Administrator</h3>
 

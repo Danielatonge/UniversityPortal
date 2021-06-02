@@ -7,8 +7,9 @@
             // -------------------- if 'edit course' is submitted -------------------
             if(isset($_POST['edit_course_submit'])) {
                 // get all input data
+                $course_id = $_POST['course_id'];
                 $course_name				= mysqli_real_escape_string($con, $_POST['course_name']);
-                $course_teacher            = mysqli_real_escape_string($con, $_POST['course_teacher']);
+                $course_teacher            = mysqli_real_escape_string($con, $_POST['user_id']);
                 
                 
               
@@ -17,9 +18,7 @@
                     $div_msg = 'Please fill in all required fields.';
                 } else { 
                     
-                    $q = "INSERT INTO courses
-                            (course_name, course_teacher)
-                            VALUES ('$course_name', '$course_teacher')";
+                    $q = "UPDATE courses SET course_name = '$course_name', user_id = '$course_teacher' WHERE course_id = $course_id";
                     
                     $result     = mysqli_query($con, $q);
                     
@@ -59,11 +58,24 @@
         <div class="col-lg-8 col-md-8">
             <h3 class="mb-30">Edit Course</h3>
             <form class="form-wrap" action="" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="course_id" value="<?php echo $edit_course['course_id'];?>"> 
                 <input type="text" class="form-control mt-10" name="course_name" placeholder="Course Name"
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Course Name'" value="<?php echo $edit_course['course_name']; ?>">
-                <input type="text" class="form-control mt-10" name="course_teacher" placeholder="Course Instructor"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Course Instructor'" value="<?php echo $edit_course['course_teacher']; ?>">
-                <button type="submit" name="edit_course_submit" class="primary-btn text-uppercase mt-10">Edit</button>
+                                
+                <?php   $q = "SELECT * FROM users WHERE user_role = 'teacher'";
+                        $teachers = mysqli_query($con, $q);
+                ?>
+                <div class="">
+                    <h5 class="mt-10 mb-10">Instructor</h5>
+                    <div class="default-select" id="default-select">
+                        <select name="user_id">
+                            <?php foreach($teachers as $teacher): ?>
+                            <option value="<?= $teacher['user_id'] ?>"><?= $teacher['user_uname'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" name="edit_course_submit" class="primary-btn text-uppercase mt-10">Update</button>
                 <a href="admin-courses.php" class="genric-btn info text-uppercase mt-10 radius">Manage</a>
             </form>
         </div>
