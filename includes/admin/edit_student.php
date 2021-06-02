@@ -16,27 +16,18 @@
                 $image_tmp = $_FILES['user_image']['tmp_name'];
                 $user_role = 'student';
                 
-                // check if username is already in use in the users table
-                $q = "SELECT users.user_uname FROM users 
-                            WHERE user_uname = '$user_uname'";
-            
-                $r = mysqli_query($con, $q);
-                
-                if(empty($user_uname) || empty($user_email) || empty($user_pass) ) {
+               if(empty($user_uname) || empty($user_email) || empty($user_pass) ) {
                     $div_class = 'danger';
                     $div_msg = 'Please fill in all required fields.';
                 } elseif(!$user_email_val) {
                     $div_class = 'danger';
                     $div_msg = 'Please enter a valid email address.';
-                } elseif(mysqli_num_rows($r) > 0) {
-                    $div_class = 'danger';
-                    $div_msg = 'Sorry, that username is already in use. Please choose another.';
                 } else { 
                     // encrypt password (see documentation on php.net)		
                     $options =['cost' => HASHCOST];
                     $user_pass = password_hash($user_pass, PASSWORD_BCRYPT, $options);	
                             
-                    move_uploaded_file($image_tmp, "../../img/$user_image");
+                    move_uploaded_file($image_tmp, "img/$user_image");
                     
                     $q = "UPDATE users SET user_uname = '$user_uname', user_pass = '$user_pass',
                         user_email = '$user_email', user_image = '$user_image', user_role = '$user_role'

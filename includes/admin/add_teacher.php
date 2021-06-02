@@ -5,18 +5,16 @@
 
 <?php
             // -------------------- if 'Add User' is submitted -------------------
-            if(isset($_POST['add_admin_submit'])) {
+            if(isset($_POST['add_teacher_submit'])) {
                 // get all input data
                 $user_uname				= mysqli_real_escape_string($con, $_POST['user_uname']);
                 $user_number            = mysqli_real_escape_string($con, $_POST['user_number']);
                 $user_email				= mysqli_real_escape_string($con, $_POST['user_email']);
                 $user_email_val		    = filter_var($user_email, FILTER_VALIDATE_EMAIL);
                 $user_pass				= mysqli_real_escape_string($con, $_POST['user_pass']);
-                $user_image				= ""; //$_FILES['user_image']['name'];
+                $user_image				= $_FILES['user_image']['name'];
                 
-                if($user_image == "") {
-                    $user_image = 'default.jpg';
-                }		
+                if($user_image == "") { $user_image = 'default.jpg'; }		
                 
                 $image_tmp = $_FILES['user_image']['tmp_name'];
                 $user_role = 'teacher';
@@ -27,7 +25,7 @@
             
                 $r = mysqli_query($con, $q);
                 
-                if(empty($user_uname) || empty($user_email) || empty($user_pass) ) {
+                if(empty($user_uname) || empty($user_email) || empty($user_pass) || empty($user_number) ) {
                     $div_class = 'danger';
                     $div_msg = 'Please fill in all required fields.';
                 } elseif(!$user_email_val) {
@@ -41,12 +39,12 @@
                     $options =['cost' => HASHCOST];
                     $user_pass = password_hash($user_pass, PASSWORD_BCRYPT, $options);	
                             
-                    move_uploaded_file($image_tmp, "../../img/$user_image");
+                    move_uploaded_file($image_tmp, "img/$user_image");
                     
                     $q = "INSERT INTO users
-                            (user_uname, user_pass, user_email,
+                            (user_uname, user_pass, user_email, user_number,
                             user_image, user_role, user_date)
-                            VALUES ('$user_uname', '$user_pass', '$user_email', 
+                            VALUES ('$user_uname', '$user_pass', '$user_email', '$user_number',
                             '$user_image', '$user_role', now())";
                     
                     $result     = mysqli_query($con, $q);
@@ -57,16 +55,18 @@
                     
                     // reset to a blank form
                     $user_uname = '';
-                    $user_number = '';
                     $user_email = '';
+                    $user_number = '';
                     $user_pass = '';
+                    $user_image = '';
                 }
             // start with a blank form
             } else {
                 $user_uname = '';
-                $user_number = '';
                 $user_email = '';
+                $user_number = '';
                 $user_pass = '';
+                $user_image = '';
             }
 ?>
 
@@ -81,24 +81,15 @@
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone Number'" value="<?php echo $user_number; ?>">
                 <input type="email" class="form-control mt-10" name="user_email" placeholder="Email Address"
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'" value="<?php echo $user_email; ?>">
-
-                <div class="">
-                    <h5 class="mt-10 mb-10">Course</h5>
-                    <div class="default-select" id="default-select">
-                        <select>
-                            <option value="1">Maths</option>
-                            <option value="1">Physics</option>
-                            <option value="1">Drawing</option>
-                            <option value="1">Computer</option>
-                        </select>
-                    </div>
-                </div>
-
                 <input type="password" class="form-control mt-10" name="user_pass" placeholder="Password"
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" value="<?php echo $user_pass; ?>">
-
+                <div class="mt-20">
+                    <h5>Upload Picture</h5>
+                    <input type="file" name="user_image" placeholder="User Photo" onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'User Photo'" required class="single-input" value="<?php echo $user_image; ?>">
+                </div>
                 <button type="submit" name="add_teacher_submit" class="primary-btn text-uppercase mt-10">Add</button>
-                <a href="admin-teacher.php" class="genric-btn info text-uppercase mt-10 radius">Manage</a>
+                <a href="admin-teachers.php" class="genric-btn info text-uppercase mt-10 radius">Manage</a>
             </form>
 
         </div>

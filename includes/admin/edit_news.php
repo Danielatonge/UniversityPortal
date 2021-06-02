@@ -12,18 +12,9 @@
                 $news_content            = mysqli_real_escape_string($con, $_POST['news_content']);
                 
                 
-                // check if newstitle is already in use in the news table
-                $q = "SELECT news.news_title FROM news 
-                            WHERE news_title = '$news_title'";
-            
-                $r = mysqli_query($con, $q);
-                
                 if(empty($news_title) || empty($news_image) || empty($news_content) ) {
                     $div_class = 'danger';
                     $div_msg = 'Please fill in all required fields.';
-                } elseif(mysqli_num_rows($r) > 0) {
-                    $div_class = 'danger';
-                    $div_msg = 'Sorry, that newstitle is already in use. Please choose another.';
                 } else { 
                     
                     $q = "INSERT INTO news

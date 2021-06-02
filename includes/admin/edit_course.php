@@ -11,18 +11,10 @@
                 $course_teacher            = mysqli_real_escape_string($con, $_POST['course_teacher']);
                 
                 
-                // check if coursename is already in use in the courses table
-                $q = "SELECT courses.course_name FROM courses 
-                            WHERE course_name = '$course_name'";
-            
-                $r = mysqli_query($con, $q);
-                
+              
                 if(empty($course_name) || empty($course_teacher) ) {
                     $div_class = 'danger';
                     $div_msg = 'Please fill in all required fields.';
-                } elseif(mysqli_num_rows($r) > 0) {
-                    $div_class = 'danger';
-                    $div_msg = 'Sorry, that coursename is already in use. Please choose another.';
                 } else { 
                     
                     $q = "INSERT INTO courses

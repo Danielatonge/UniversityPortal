@@ -34,7 +34,7 @@
 
     
     <div class="section-top-border col-lg-12 col-md-12">
-    <a href="admin-teacher.php?source=add_teacher" 
+    <a href="admin-teachers.php?source=add_teacher" 
     class="genric-btn primary radius mb-10" role="button">Add Teacher</a>
         <div class="progress-table-wrap">
             <div class="progress-table">

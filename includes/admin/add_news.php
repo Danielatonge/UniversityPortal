@@ -8,17 +8,20 @@
             if(isset($_POST['add_news_submit'])) {
                 // get all input data
                 $news_title				= mysqli_real_escape_string($con, $_POST['news_title']);
-                $news_image            = mysqli_real_escape_string($con, $_POST['news_image']);
+                $news_image            = $_FILES['news_image']['name'];
                 $news_content            = mysqli_real_escape_string($con, $_POST['news_content']);
                 
-                
+                if($user_image != "") { 
+                    $image_tmp = $_FILES['user_image']['tmp_name']; 
+                    move_uploaded_file($image_tmp, "img/$user_image");
+                }
                 // check if newstitle is already in use in the news table
                 $q = "SELECT news.news_title FROM news 
                             WHERE news_title = '$news_title'";
             
                 $r = mysqli_query($con, $q);
                 
-                if(empty($news_title) || empty($news_image) || empty($news_content) ) {
+                if(empty($news_title) || empty($news_content) ) {
                     $div_class = 'danger';
                     $div_msg = 'Please fill in all required fields.';
                 } elseif(mysqli_num_rows($r) > 0) {
@@ -26,8 +29,7 @@
                     $div_msg = 'Sorry, that newstitle is already in use. Please choose another.';
                 } else { 
                     
-                    $q = "INSERT INTO news
-                            (news_date, news_title,news_content, news_image)
+                    $q = "INSERT INTO news (news_date, news_title,news_content, news_image)
                             VALUES ( now(), '$news_title', '$news_content','$news_image')";
                     
                     $result     = mysqli_query($con, $q);
@@ -58,9 +60,10 @@
                         class="single-input"  value="<?php echo $news_title; ?>">
                 </div>
                 <div class="mt-10">
+                    <h5>Picture</h5>
                     <input type="file" name="news_image" placeholder="News Image"
                         onfocus="this.placeholder = ''" onblur="this.placeholder = 'News Image'" required
-                        class="single-input"  value="<?php echo $news_image; ?>">
+                        class="single-input" >
                 </div>
                 <div class="mt-10">
                     <textarea class="single-textarea" name="news_content" placeholder="Content" onfocus="this.placeholder = ''"

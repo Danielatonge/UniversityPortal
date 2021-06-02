@@ -11,18 +11,9 @@
                 $group_name				= mysqli_real_escape_string($con, $_POST['group_name']);
                 
                 
-                // check if groupname is already in use in the groups table
-                $q = "SELECT groups.group_name FROM groups 
-                            WHERE group_name = '$group_name'";
-            
-                $r = mysqli_query($con, $q);
-                
-                if(empty($group_name)) {
+               if(empty($group_name)) {
                     $div_class = 'danger';
                     $div_msg = 'Please fill in all required fields.';
-                } elseif(mysqli_num_rows($r) > 0) {
-                    $div_class = 'danger';
-                    $div_msg = 'Sorry, that groupname is already in use. Please choose another.';
                 } else { 
                     
                     $q = "UPDATE groups SET group_name = '$group_name' WHERE group_id = $group_id";
