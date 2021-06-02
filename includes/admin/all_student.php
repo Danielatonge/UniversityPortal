@@ -43,6 +43,7 @@
                     <div class="visit">Username</div>
                     <div class="visit">Email</div>
                     <div class="visit">Image</div>
+                    <div class="visit">Group</div>
                     <div class="visit">Reg. Date</div>
                     <div class="country">Actions</div>
                 </div>
@@ -63,6 +64,17 @@
                     <div class="visit"> <img class="img-responsive" 
                         src="img/<?php echo $user['user_image'];?>" height="72px"	width="72px" alt="image">
                     </div>
+
+                    <?php
+                        $group_id = $user['group_id'];
+                        $q =    "SELECT * FROM groups
+                                WHERE groups.group_id = '$group_id'";
+
+                        $result = mysqli_query($con, $q);
+                        $group = mysqli_fetch_array($result);
+                    ?>
+                    <div class="visit"><?php echo $group['group_name'];?></div>
+
                     <?php date_default_timezone_set(TZ); ?>
                     <div class="visit"><?php echo date('M. j, Y, g:i a', strtotime($user['user_date']));?></div>
                     <div class="country">

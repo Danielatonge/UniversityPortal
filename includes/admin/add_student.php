@@ -5,11 +5,12 @@
 
 <?php
             // -------------------- if 'Add User' is submitted -------------------
-            if(isset($_POST['add_admin_submit'])) {
+            if(isset($_POST['add_student_submit'])) {
                 // get all input data
                 $user_uname				= mysqli_real_escape_string($con, $_POST['user_uname']);
                 $user_number            = mysqli_real_escape_string($con, $_POST['user_number']);
                 $user_email				= mysqli_real_escape_string($con, $_POST['user_email']);
+                $group_id				= mysqli_real_escape_string($con, $_POST['group_id']);
                 $user_email_val		    = filter_var($user_email, FILTER_VALIDATE_EMAIL);
                 $user_pass				= mysqli_real_escape_string($con, $_POST['user_pass']);
                 $user_image				= $_FILES['user_image']['name'];
@@ -44,9 +45,9 @@
                     move_uploaded_file($image_tmp, "img/$user_image");
                     
                     $q = "INSERT INTO users
-                            (user_uname, user_pass, user_email, user_number,
+                            (user_uname, user_pass, user_email, user_number, group_id,
                             user_image, user_role, user_date)
-                            VALUES ('$user_uname', '$user_pass', '$user_email', '$user_number',
+                            VALUES ('$user_uname', '$user_pass', '$user_email', '$user_number', '$group_id',
                             '$user_image', '$user_role', now())";
                     
                     $result     = mysqli_query($con, $q);
@@ -81,14 +82,16 @@
                 <input type="email" class="form-control mt-10" name="user_email" placeholder="Email Address"
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'" value="<?php echo $user_email; ?>">
 
+                <?php   $q = "SELECT * FROM groups";
+                        $groups = mysqli_query($con, $q);
+                ?>
                 <div class="">
                     <h5 class="mt-10 mb-10">Group</h5>
                     <div class="default-select" id="default-select">
-                        <select>
-                            <option value="1">231</option>
-                            <option value="1">432</option>
-                            <option value="1">234</option>
-                            <option value="1">434</option>
+                        <select name="group_id">
+                            <?php foreach($groups as $group): ?>
+                            <option value="<?= $group['group_id'] ?>"><?= $group['group_name'] ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                 </div>

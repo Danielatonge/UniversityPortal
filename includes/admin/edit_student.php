@@ -80,19 +80,40 @@
             <h3 class="mb-30">Edit Student</h3>
 
             <form class="form-wrap" action="" method="post" enctype="multipart/form-data">
-
+                <input type="hidden" name="user_id" value="<?php echo $edit_user['user_id'];?>">    
                 <input type="text" class="form-control mt-10" name="user_uname" placeholder="Username"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" value="<?php echo $edit_user['user_uname'];?>" >
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Username'" value="<?php echo $edit_user['user_uname']; ?>">
 
                 <input type="phone" class="form-control mt-10" name="user_number" placeholder="Phone Number"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone Number'" value="">
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone Number'" value="<?php echo $edit_user['user_number']; ?>">
                 <input type="email" class="form-control mt-10" name="user_email" placeholder="Email Address"
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address'" value="<?php echo $edit_user['user_email']; ?>">
-                <input type="password" class="form-control mt-10" name="user_pass" placeholder="Password"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'" value="">
+
+                <?php   $q = "SELECT * FROM groups";
+                        $groups = mysqli_query($con, $q);
+                ?>
+                <div class="">
+                    <h5 class="mt-10 mb-10">Group</h5>
+                    <div class="default-select" id="default-select">
+                        <select name="group_id">
+                            <?php foreach($groups as $group): ?>
+                            <option value="<?= $group['group_id'] ?>"><?= $group['group_name'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="">
+                    <h5>Upload Picture</h5>
+                    <input type="file" name="user_image" placeholder="User Photo" onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'User Photo'" required class="single-input" >
+                </div>
+
+                <input type="password" class="form-control mt-10" name="user_pass" placeholder="Enter New Password"
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter New Password'" >
 
                 <button type="submit" name="edit_student_submit" class="primary-btn text-uppercase mt-10">Update</button>
-                <a href="admin-student.php" class="genric-btn info text-uppercase mt-10 radius">Manage</a>
+                <a href="admin-students.php" class="genric-btn info text-uppercase mt-10 radius">Manage</a>
             </form>
 
         </div>

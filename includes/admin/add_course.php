@@ -8,7 +8,7 @@
             if(isset($_POST['add_course_submit'])) {
                 // get all input data
                 $course_name				= mysqli_real_escape_string($con, $_POST['course_name']);
-                $course_teacher            = mysqli_real_escape_string($con, $_POST['course_teacher']);
+                $course_teacher            = mysqli_real_escape_string($con, $_POST['user_id']);
                 
                 
                 // check if coursename is already in use in the courses table
@@ -25,8 +25,7 @@
                     $div_msg = 'Sorry, that coursename is already in use. Please choose another.';
                 } else { 
                     
-                    $q = "INSERT INTO courses
-                            (course_name, course_teacher)
+                    $q = "INSERT INTO courses (course_name, user_id)
                             VALUES ('$course_name', '$course_teacher')";
                     
                     $result     = mysqli_query($con, $q);
@@ -51,8 +50,21 @@
             <form class="form-wrap" action="" method="post" enctype="multipart/form-data">
                 <input type="text" class="form-control mt-10" name="course_name" placeholder="Course Name"
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Course Name'" value="<?php echo $course_name; ?>">
-                <input type="text" class="form-control mt-10" name="course_teacher" placeholder="Course Instructor"
-                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Course Instructor'" value="<?php echo $course_teacher; ?>">
+                
+                <?php   $q = "SELECT * FROM users WHERE user_role = 'teacher'";
+                        $teachers = mysqli_query($con, $q);
+                ?>
+                <div class="">
+                    <h5 class="mt-10 mb-10">Instructor</h5>
+                    <div class="default-select" id="default-select">
+                        <select name="user_id">
+                            <?php foreach($teachers as $teacher): ?>
+                            <option value="<?= $teacher['user_id'] ?>"><?= $teacher['user_uname'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                </div>
+                
                 <button type="submit" name="add_course_submit" class="primary-btn text-uppercase mt-10">Add</button>
                 <a href="admin-courses.php" class="genric-btn info text-uppercase mt-10 radius">Manage</a>
             </form>

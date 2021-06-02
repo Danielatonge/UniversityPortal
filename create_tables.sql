@@ -18,6 +18,20 @@ CREATE TABLE `news` (
 );
 
 
+--
+-- Table structure for table `groups`
+--
+
+CREATE TABLE `groups` (
+  `group_id` int(3) NOT NULL AUTO_INCREMENT,
+  `group_name` varchar(10) NOT NULL,
+  PRIMARY KEY (`group_id`)
+);
+INSERT INTO `groups` (`group_name`) VALUES ('890');
+INSERT INTO `groups` (`group_name`) VALUES ('452');
+INSERT INTO `groups` (`group_name`) VALUES ('977');
+INSERT INTO `groups` (`group_name`) VALUES ('353');
+
 
 --
 -- Table structure for table `users`
@@ -31,7 +45,9 @@ CREATE TABLE `users` (
   `user_number` varchar(15), 
   `user_role` varchar(50) NOT NULL,
   `user_date` datetime NOT NULL,
-  PRIMARY KEY (`user_id`)
+  `group_id` int(3),
+  PRIMARY KEY (`user_id`),
+  FOREIGN KEY (`group_id`) REFERENCES `groups`(`group_id`)
 );
 INSERT INTO `users` (`user_uname`, `user_pass`, `user_email`, `user_number`, `user_image`, `user_role`, `user_date`) VALUES ('dan', '$2y$12$wp3q6cUbtDKh3E55K6hy4OvO.q8mzBT0SgeE/Ldl954NYYGuqzcnq', 'dan@gmail.com', '+897868763', 'default.png', 'admin', '2021-06-01 13:16:53');
 
@@ -48,17 +64,16 @@ CREATE TABLE `courses` (
   FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`)
 );
 
-
 --
--- Table structure for table `groups`
+-- Table structure for table `lectures`
 --
-
-CREATE TABLE `groups` (
-  `group_id` int(3) NOT NULL AUTO_INCREMENT,
-  `group_name` varchar(10) NOT NULL,
-  PRIMARY KEY (`group_id`)
+CREATE TABLE `lectures` (
+  `lecture_id` int(3) NOT NULL AUTO_INCREMENT,
+  `lecture_name` varchar(20) NOT NULL,
+  `course_id` int(3) NOT NULL,
+  PRIMARY KEY (`lecture_id`),
+  FOREIGN KEY (`course_id`) REFERENCES `courses`(`course_id`)
 );
-
 
 
 --

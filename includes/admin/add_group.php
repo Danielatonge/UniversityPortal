@@ -46,8 +46,10 @@
         <div class="col-lg-8 col-md-8">
             <h3 class="mb-30">Add group</h3>
             <form class="form-wrap" action="" method="post" enctype="multipart/form-data">
+
                 <input type="text" class="form-control mt-10" name="group_name" placeholder="group Name"
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'group Name'" value="<?php echo $group_name; ?>">
+                    
                 <button type="submit" name="add_group_submit" class="primary-btn text-uppercase mt-10">Add</button>
                 <a href="admin-groups.php" class="genric-btn info text-uppercase mt-10 radius">Manage</a>
             </form>

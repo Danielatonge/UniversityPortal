@@ -5,19 +5,25 @@
         <div class="container">
             <div class="section-top-border">
                 <div class="row">
-                    <div class="col-lg-8 col-md-8">
-                        <h3 class="mb-30">Add Course</h3>
-                        <form class="form-wrap" action="#">
-                            <input type="text" class="form-control mt-10" name="course_name" placeholder="Course Name"
-                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Course Name'">
-                            <input type="text" class="form-control mt-10" name="course_teacher" placeholder="Course Instructor"
-                                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Course Instructor'">
-                            <button class="primary-btn text-uppercase mt-10">Add</button>
-                        </form>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <h4><a href="">Manage Courses</a></h4>
-                    </div>
+
+                <?php 
+                    if(isset($_GET['source'])) {
+                        $source = $_GET['source'];
+                    } else {
+                        $source = '';
+                    }
+
+                    switch($source) {
+                        case 'add_course':
+                            include 'includes/admin/add_course.php';
+                            break;
+                        case 'edit_course':
+                            include 'includes/admin/edit_course.php';
+                            break;
+                        default:
+                            include 'includes/admin/all_course.php';
+                    } 
+                ?>
                 </div>
             </div>
         </div>

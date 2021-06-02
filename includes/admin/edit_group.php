@@ -7,6 +7,7 @@
             // -------------------- if 'edit group' is submitted -------------------
             if(isset($_POST['edit_group_submit'])) {
                 // get all input data
+                $group_id               = $_POST['group_id'];
                 $group_name				= mysqli_real_escape_string($con, $_POST['group_name']);
                 
                 
@@ -24,13 +25,11 @@
                     $div_msg = 'Sorry, that groupname is already in use. Please choose another.';
                 } else { 
                     
-                    $q = "INSERT INTO groups
-                            (group_name)
-                            VALUES ('$group_name')";
+                    $q = "UPDATE groups SET group_name = '$group_name' WHERE group_id = $group_id";
                     
                     $result     = mysqli_query($con, $q);
                     
-                    $div_info   = confirmQuery($result, 'insert');
+                    $div_info   = confirmQuery($result, 'update');
                     $div_class 	= $div_info['div_class'];
                     $div_msg 	= $div_info['div_msg'];
                     
@@ -66,9 +65,10 @@
         <div class="col-lg-8 col-md-8">
             <h3 class="mb-30">Edit group</h3>
             <form class="form-wrap" action="" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="group_id" value="<?php echo $edit_group['group_id'];?>">
                 <input type="text" class="form-control mt-10" name="group_name" placeholder="group Name"
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'group Name'" value="<?php echo $edit_group['group_name']; ?>">
-                <button type="submit" name="edit_group_submit" class="primary-btn text-uppercase mt-10">Edit</button>
+                <button type="submit" name="edit_group_submit" class="primary-btn text-uppercase mt-10">Update</button>
                 <a href="admin-groups.php" class="genric-btn info text-uppercase mt-10 radius">Manage</a>
             </form>
         </div>

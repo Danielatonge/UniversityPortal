@@ -66,12 +66,12 @@
                     <?php date_default_timezone_set(TZ); ?>
                     <div class="visit"><?php echo date('M. j, Y, g:i a', strtotime($user['user_date']));?></div>
                     <div class="country">
-                        <a href="admin-teacher.php?source=edit_teacher&id=<?php echo $user['user_id'];?>" 
+                        <a href="admin-teachers.php?source=edit_teacher&id=<?php echo $user['user_id'];?>" 
                         class="genric-btn primary circle small" role="button">Edit
                         </a>
                         <hr>
                         <a onclick="return confirm('Are you sure you want to delete this user?');" 
-                        href="admin-teacher.php?del=<?php echo $user['user_id'];?>" class="genric-btn danger circle small" role="button">
+                        href="admin-teachers.php?del=<?php echo $user['user_id'];?>" class="genric-btn danger circle small" role="button">
                         Delete
                         </a>
                     </div>
