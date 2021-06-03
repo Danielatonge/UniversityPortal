@@ -49,7 +49,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`user_id`),
   FOREIGN KEY (`group_id`) REFERENCES `groups`(`group_id`)
 );
-INSERT INTO `users` (`user_uname`, `user_pass`, `user_email`, `user_number`, `user_image`, `user_role`, `user_date`) VALUES ('dan', '$2y$12$wp3q6cUbtDKh3E55K6hy4OvO.q8mzBT0SgeE/Ldl954NYYGuqzcnq', 'dan@gmail.com', '+897868763', 'default.png', 'admin', '2021-06-01 13:16:53');
+INSERT INTO `users` (`user_uname`, `user_pass`, `user_email`, `user_number`, `user_image`, `user_role`, `user_date`) VALUES ('dan', '$2y$12$wp3q6cUbtDKh3E55K6hy4OvO.q8mzBT0SgeE/Ldl954NYYGuqzcnq', 'dan@gmail.com', '+897868763', 'default.png', 'teacher', '2021-06-01 13:16:53');
 
 
 --
@@ -70,7 +70,9 @@ CREATE TABLE `courses` (
 CREATE TABLE `lectures` (
   `lecture_id` int(3) NOT NULL AUTO_INCREMENT,
   `lecture_name` varchar(20) NOT NULL,
-  `course_id` int(3) NOT NULL,
+  `course_id` int(3),
+  `lecture` varchar(50) NOT NULL,
+  `lecture_note` varchar(256),
   PRIMARY KEY (`lecture_id`),
   FOREIGN KEY (`course_id`) REFERENCES `courses`(`course_id`)
 );
@@ -94,13 +96,14 @@ CREATE TABLE `sessions` (
 CREATE TABLE `books` (
   `book_id` int(3) NOT NULL AUTO_INCREMENT,
   `course_id` int(3),
+  `book_preview` varchar(50) NOT NULL,
+  `book` varchar(50) NOT NULL,
   `book_title` varchar(100) NOT NULL,
   `book_author` varchar(100) NOT NULL,
   `book_note` varchar(256) NOT NULL,
   PRIMARY KEY (`book_id`),
   FOREIGN KEY (`course_id`) REFERENCES `courses`(`course_id`)
 );
-
 
 
 
