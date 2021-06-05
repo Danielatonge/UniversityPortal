@@ -14,18 +14,10 @@
                 $book_author            = mysqli_real_escape_string($con, $_POST['book_author']);
                 $book_note            = mysqli_real_escape_string($con, $_POST['book_note']);
                 
-                // check if booktitle is already in use in the books table
-                $q = "SELECT books.book_title FROM books 
-                            WHERE book_title = '$book_title'";
-            
-                $r = mysqli_query($con, $q);
                 
                 if(empty($book_title) || empty($book_preview) || empty($book) || empty($book_author) || empty($book_note) ) {
                     $div_class = 'danger';
                     $div_msg = 'Please fill in all required fields.';
-                } elseif(mysqli_num_rows($r) > 0) {
-                    $div_class = 'danger';
-                    $div_msg = 'Sorry, that booktitle is already in use. Please choose another.';
                 } else { 
                     if($book_preview != "" && $book != "") { 
                         $prev_tmp = $_FILES['book_preview']['tmp_name'];

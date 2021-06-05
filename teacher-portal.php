@@ -26,7 +26,7 @@
                     <div class="single-cat-widget">
                         <div class="content relative">
                             <div class="overlay overlay-bg"></div>
-                            <a href="teacher-test.php" >
+                            <a href="teacher-tests.php" >
                                 <div class="thumb">
                                     <img class="content-image img-fluid d-block mx-auto" src="img/blog/cat-widget2.jpg"
                                         alt="">

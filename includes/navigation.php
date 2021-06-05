@@ -19,7 +19,7 @@
                         
                     <?php elseif($_SESSION['role'] == 'teacher'): ?>
                         <li><a href="teacher-books.php">Books</a></li>
-                        <li><a href="teacher-test.php">Test</a></li>
+                        <li><a href="teacher-tests.php">Test</a></li>
                         <li><a href="teacher-lectures.php">Lectures</a></li>
                         <li><a href="teacher-grades.php">Grades</a></li>
                     <?php elseif($_SESSION['role'] == 'admin'): ?>

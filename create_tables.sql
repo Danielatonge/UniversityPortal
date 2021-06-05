@@ -49,7 +49,9 @@ CREATE TABLE `users` (
   PRIMARY KEY (`user_id`),
   FOREIGN KEY (`group_id`) REFERENCES `groups`(`group_id`)
 );
-INSERT INTO `users` (`user_uname`, `user_pass`, `user_email`, `user_number`, `user_image`, `user_role`, `user_date`) VALUES ('dan', '$2y$12$wp3q6cUbtDKh3E55K6hy4OvO.q8mzBT0SgeE/Ldl954NYYGuqzcnq', 'dan@gmail.com', '+897868763', 'default.png', 'teacher', '2021-06-01 13:16:53');
+INSERT INTO `users` (`user_uname`, `user_pass`, `user_email`, `user_number`, `user_image`, `user_role`, `user_date`) VALUES ('dan', '$2y$12$wp3q6cUbtDKh3E55K6hy4OvO.q8mzBT0SgeE/Ldl954NYYGuqzcnq', 'dan@gmail.com', '+897868763', 'default.png', 'admin', '2021-06-01 13:16:53');
+INSERT INTO `users` (`user_uname`, `user_pass`, `user_email`, `user_number`, `user_image`, `user_role`, `user_date`) VALUES ('nas', '$2y$12$wp3q6cUbtDKh3E55K6hy4OvO.q8mzBT0SgeE/Ldl954NYYGuqzcnq', 'dan@gmail.com', '+897868763', 'default.png', 'teacher', '2021-06-01 13:16:53');
+INSERT INTO `users` (`user_uname`, `user_pass`, `user_email`, `user_number`, `user_image`, `user_role`, `user_date`) VALUES ('and', '$2y$12$wp3q6cUbtDKh3E55K6hy4OvO.q8mzBT0SgeE/Ldl954NYYGuqzcnq', 'dan@gmail.com', '+897868763', 'default.png', 'student', '2021-06-01 13:16:53');
 
 
 --
@@ -124,3 +126,30 @@ CREATE TABLE `grades` (
 );
 
 
+
+--
+-- Table structure for table `test`
+--
+CREATE TABLE `tests` (
+  `test_id` int(3) NOT NULL AUTO_INCREMENT,
+  `test_name` varchar(100) NOT NULL,
+  `course_id` int(3) NOT NULL,
+  PRIMARY KEY (`test_id`),
+  FOREIGN KEY (`course_id`) REFERENCES `courses`(`course_id`)
+);
+
+
+--
+-- Table structure for table `questions`
+--
+CREATE TABLE `questions` (
+  `question_id` int(3) NOT NULL AUTO_INCREMENT,
+  `question_text` varchar(150) NOT NULL,
+  `test_id` int(3) NOT NULL,
+  `answer_one` varchar(150) NOT NULL,
+  `answer_two` varchar(150) NOT NULL,
+  `answer_three` varchar(150) NOT NULL,
+  `correct` int(2) NOT NULL,
+  PRIMARY KEY (`question_id`),
+  FOREIGN KEY (`test_id`) REFERENCES `tests`(`test_id`)
+);

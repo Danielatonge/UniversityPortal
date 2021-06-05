@@ -12,18 +12,9 @@
                 $lecture                   = $_FILES['lecture']['name'];
                 $lecture_note            = mysqli_real_escape_string($con, $_POST['lecture_note']);
                 
-                // check if lecturename is already in use in the lectures table
-                $q = "SELECT lectures.lecture_name FROM lectures 
-                            WHERE lecture_name = '$lecture_name'";
-            
-                $r = mysqli_query($con, $q);
-                
                 if(empty($lecture_name) || empty($lecture) || empty($lecture_note) ) {
                     $div_class = 'danger';
                     $div_msg = 'Please fill in all required fields.';
-                } elseif(mysqli_num_rows($r) > 0) {
-                    $div_class = 'danger';
-                    $div_msg = 'Sorry, that lecturename is already in use. Please choose another.';
                 } else { 
                     if($lecture != "") { 
                         $lecture_tmp = $_FILES['lecture']['tmp_name'];
