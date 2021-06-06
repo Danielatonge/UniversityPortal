@@ -1,6 +1,10 @@
 <?php include "includes/header.php"; ?>
 <?php include "includes/navigation.php"; ?>
 
+    <?php 
+        $q =    "SELECT * FROM books";
+        $books = mysqli_query($con, $q);
+    ?>
     <section class="blog-area section-gap" id="blog">
         <div class="container">
             <div class="row d-flex justify-content-center">
@@ -12,67 +16,18 @@
                 </div>
             </div>
             <div class="row">
+            <?php foreach($books as $book): ?>
                 <div class="col-lg-3 col-md-6 single-blog">
                     <div class="thumb">
-                        <img class="img-fluid" src="img/xb1.jpg.pagespeed.ic.9F-kTnBvcY.jpg" alt="">
+                        <img class="img-fluid" src="img/<?= $book['book_preview']?>" alt="">
                     </div>
-                    <p class="meta">By <a href="#">Mark Wiens</a></p>
-                    <a href="blog-single.php">
-                        <h5>Addiction When Gambling Becomes A Problem</h5>
-                    </a>
-                    <p>
-                        Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend
-                        hours in front of their.
-                    </p>
-                    <a href="#" class="details-btn d-flex justify-content-center align-items-center"><span
-                        class="details">Download</span><span class="lnr lnr-arrow-right"></span></a>
+                    <p class="meta">By <?= $book['book_author']?></p>
+                    <h5><?= $book['book_title']?></h5>
+                    <p><?= $book['book_note']?></p>
+                    <a href="files/<?= $book['book']?>" class="details-btn d-flex justify-content-center align-items-center"><span
+                        class="details" download>Download</span><span class="lnr lnr-arrow-right"></span></a>
                 </div>
-                <div class="col-lg-3 col-md-6 single-blog">
-                    <div class="thumb">
-                        <img class="img-fluid" src="img/xb1.jpg.pagespeed.ic.9F-kTnBvcY.jpg" alt="">
-                    </div>
-                    <p class="meta">By <a href="#">Mark Wiens</a></p>
-                    <a href="blog-single.php">
-                        <h5>Addiction When Gambling Becomes A Problem</h5>
-                    </a>
-                    <p>
-                        Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend
-                        hours in front of their.
-                    </p>
-                    <a href="#" class="details-btn d-flex justify-content-center align-items-center"><span
-                        class="details">Download</span><span class="lnr lnr-arrow-right"></span></a>
-                </div>
-                <div class="col-lg-3 col-md-6 single-blog">
-                    <div class="thumb">
-                        <img class="img-fluid" src="img/xb1.jpg.pagespeed.ic.9F-kTnBvcY.jpg" alt="">
-                    </div>
-                    <p class="meta">By <a href="#">Mark Wiens</a></p>
-                    <a href="blog-single.php">
-                        <h5>Addiction When Gambling Becomes A Problem</h5>
-                    </a>
-                    <p>
-                        Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend
-                        hours in front of their.
-                    </p>
-                    <a href="#" class="details-btn d-flex justify-content-center align-items-center"><span
-                        class="details">Download</span><span class="lnr lnr-arrow-right"></span></a>
-                </div>
-                <div class="col-lg-3 col-md-6 single-blog">
-                    <div class="thumb">
-                        <img class="img-fluid" src="img/xb1.jpg.pagespeed.ic.9F-kTnBvcY.jpg" alt="">
-                    </div>
-                    <p class="meta">By <a href="#">Mark Wiens</a></p>
-                    <a href="blog-single.php">
-                        <h5>Addiction When Gambling Becomes A Problem</h5>
-                    </a>
-                    <p>
-                        Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend
-                        hours in front of their.
-                    </p>
-                    <a href="#" class="details-btn d-flex justify-content-center align-items-center"><span
-                        class="details">Download</span><span class="lnr lnr-arrow-right"></span></a>
-                </div>
-                
+            <?php endforeach; ?>          
             </div>
         </div>
     </section>

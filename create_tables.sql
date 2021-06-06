@@ -16,7 +16,8 @@ CREATE TABLE `news` (
   `news_image` varchar(50) NOT NULL,
   PRIMARY KEY (`news_id`)
 );
-
+INSERT INTO `news` (`news_date`, `news_title`, `news_content`, `news_image`) VALUES 
+  ('2021-06-01 13:16:53', 'The Universe Through A Child S Eyes', 'For most of us, the idea of astronomy is something we directly connect to “stargazing”, telescopes and seeing magnificent displays in the heavens.', 'xe2.jpg.pagespeed.ic.LTf87DI54f.jpg');
 
 --
 -- Table structure for table `groups`
@@ -60,11 +61,17 @@ INSERT INTO `users` (`user_uname`, `user_pass`, `user_email`, `user_number`, `us
 
 CREATE TABLE `courses` (
   `course_id` int(3) NOT NULL AUTO_INCREMENT,
+  `course_image` varchar(50) NULL,
   `course_name` varchar(20) NOT NULL,
+  `course_overview` varchar(256) NULL,
   `user_id` int(3) NOT NULL,
   PRIMARY KEY (`course_id`),
   FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`)
 );
+INSERT INTO `courses` (`course_name`, `course_image`, `course_overview`, `user_id`) VALUES 
+('Maths', 'xb1.jpg.pagespeed.ic.9F-kTnBvcY.jpg', 'Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend hours in front of their.', 2);
+
+
 
 --
 -- Table structure for table `lectures`
@@ -106,6 +113,9 @@ CREATE TABLE `books` (
   PRIMARY KEY (`book_id`),
   FOREIGN KEY (`course_id`) REFERENCES `courses`(`course_id`)
 );
+INSERT INTO `books` (`book_preview`, `book`, `book_title`, `book_author`, `book_note`) VALUES 
+  ('xb1.jpg.pagespeed.ic.9F-kTnBvcY.jpg', 'lsq.pdf', 'Addiction When Gambling Becomes A Problem','Mark Wiens', 
+  'Computers have become ubiquitous in almost every facet of our lives. At work, desk jockeys spend hours in front of their.');
 
 
 
@@ -133,6 +143,7 @@ CREATE TABLE `grades` (
 CREATE TABLE `tests` (
   `test_id` int(3) NOT NULL AUTO_INCREMENT,
   `test_name` varchar(100) NOT NULL,
+  `test_content` varchar(100) NULL,
   `course_id` int(3) NOT NULL,
   PRIMARY KEY (`test_id`),
   FOREIGN KEY (`course_id`) REFERENCES `courses`(`course_id`)
@@ -146,9 +157,9 @@ CREATE TABLE `questions` (
   `question_id` int(3) NOT NULL AUTO_INCREMENT,
   `question_text` varchar(150) NOT NULL,
   `test_id` int(3) NOT NULL,
-  `answer_one` varchar(150) NOT NULL,
-  `answer_two` varchar(150) NOT NULL,
-  `answer_three` varchar(150) NOT NULL,
+  `option_one` varchar(150) NOT NULL,
+  `option_two` varchar(150) NOT NULL,
+  `option_three` varchar(150) NOT NULL,
   `correct` int(2) NOT NULL,
   PRIMARY KEY (`question_id`),
   FOREIGN KEY (`test_id`) REFERENCES `tests`(`test_id`)

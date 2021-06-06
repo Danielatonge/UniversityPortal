@@ -57,7 +57,7 @@
                     <div class="visit"><?php echo $test['test_name'];?></div>
                     <div class="visit"><?php echo $test['course_id'];?></div>
                     <div class="visit">
-                        <a href="teacher-questions.php?id=<?php echo $test['test_id'];?>" > Manage Questions
+                        <a href="teacher-questions.php?test_id=<?php echo $test['test_id'];?>" > Manage Questions
                         </a>
                     </div>
                     <div class="country">
