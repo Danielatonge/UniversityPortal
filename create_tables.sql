@@ -143,19 +143,22 @@ CREATE TABLE `grades` (
 CREATE TABLE `tests` (
   `test_id` int(3) NOT NULL AUTO_INCREMENT,
   `test_name` varchar(100) NOT NULL,
-  `test_content` varchar(100) NULL,
+  `test_content` varchar(256) NULL,
   `course_id` int(3) NOT NULL,
   PRIMARY KEY (`test_id`),
   FOREIGN KEY (`course_id`) REFERENCES `courses`(`course_id`)
 );
-
+INSERT INTO `tests` (`test_name`, `test_content`, `course_id`) VALUES ('First Semester Test',
+'MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction', 1);
+INSERT INTO `tests` (`test_name`, `test_content`, `course_id`) VALUES ('Astronomy Binoculars A Great Alternative',
+'MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction', 1);
 
 --
 -- Table structure for table `questions`
 --
 CREATE TABLE `questions` (
   `question_id` int(3) NOT NULL AUTO_INCREMENT,
-  `question_text` varchar(150) NOT NULL,
+  `question_text` varchar(250) NOT NULL,
   `test_id` int(3) NOT NULL,
   `option_one` varchar(150) NOT NULL,
   `option_two` varchar(150) NOT NULL,
@@ -164,3 +167,7 @@ CREATE TABLE `questions` (
   PRIMARY KEY (`question_id`),
   FOREIGN KEY (`test_id`) REFERENCES `tests`(`test_id`)
 );
+INSERT INTO `questions` (`question_text`, `test_id`, `option_one`, `option_two`, `option_three`, `correct`) VALUES
+('Which of the functions is used to sort an array in descending order?', 1, 'sort()', 'asort()', 'rsort()', 3);
+INSERT INTO `questions` (`question_text`, `test_id`, `option_one`, `option_two`, `option_three`, `correct`) VALUES
+('Who is the father of PHP?', 1, 'Rasmus Lerdorf', 'Larry Wall', 'Zeev Suraski', 1);

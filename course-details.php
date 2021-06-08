@@ -3,7 +3,8 @@
 
     <?php 
         if(isset($_GET['course_id'])) { $course_id = $_GET['course_id']; }
-        $q = "SELECT * FROM courses WHERE course_id = '$course_id'";
+        $q = "SELECT courses.course_id, courses.course_image, courses.course_name,
+        courses.course_overview, users.user_uname, users.user_email FROM courses INNER JOIN users ON courses.user_id = users.user_id WHERE course_id = '$course_id'";
         $result = mysqli_query($con, $q);
         $course = mysqli_fetch_array($result);
     ?>
@@ -29,7 +30,13 @@
                         <li>
                             <a class="justify-content-between d-flex" href="#">
                                 <p>Professor’s Name</p>
-                                <span class="or"><?= $course['user_id']; ?></span>
+                                <span class="or"><?= $course['user_uname']; ?></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="justify-content-between d-flex" href="#">
+                                <p>E-mail </p>
+                                <span><?= $course['user_email']; ?></span>
                             </a>
                         </li>
                         <li>
@@ -54,8 +61,13 @@
                     </div>
                 </div>
             </div>
+            <?php 
+                $q =    "SELECT * FROM tests";
+                $tests = mysqli_query($con, $q);
+            ?>
             <div class="row">
                 <div class="col-lg-12 posts-list">
+                    <?php foreach($tests as $test): ?>
                     <div class="single-post row">
                         <div class="col-lg-4  col-md-4 meta-details">
                             <div class="user-details row">
@@ -66,39 +78,14 @@
                             </div>
                         </div>
                         <div class="col-lg-8 col-md-8 ">
-                            <a class="posts-title" href="blog-single.php">
-                                <h3>Astronomy Binoculars A Great Alternative</h3>
-                            </a>
-                            <p class="excert">
-                                MCSE boot camps have its supporters and its detractors. Some people do not understand
-                                why you should have to spend money on boot camp when you can get the MCSE study
-                                materials yourself at a fraction.
-                            </p>
-                            <a href="course-test.php" class="primary-btn">Take</a>
-                        </div>
-                    </div>
-                    <div class="single-post row">
-                        <div class="col-lg-4  col-md-4 meta-details">
-                            <div class="user-details row">
-                                
-                                <p class="date col-lg-12 col-md-12 col-6"><a href="#">Start: 9:30am 12/12/2017</a> <span
-                                        class="lnr lnr-calendar-full"></span></p>
-                                <p class="date col-lg-12 col-md-12 col-6"><a href="#">End: 9:30pm 12/12/2017</a> <span
-                                        class="lnr lnr-calendar-full"></span></p>
+                            <div class="posts-title">
+                                <h3><?= $test['test_name'];?></h3>
                             </div>
-                        </div>
-                        <div class="col-lg-8 col-md-8 ">
-                            <a class="posts-title" href="blog-single.php">
-                                <h3>Astronomy Binoculars A Great Alternative</h3>
-                            </a>
-                            <p class="excert">
-                                MCSE boot camps have its supporters and its detractors. Some people do not understand
-                                why you should have to spend money on boot camp when you can get the MCSE study
-                                materials yourself at a fraction.
-                            </p>
-                            <a href="course-test.php" class="primary-btn">Take</a>
+                            <p class="excert"><?= $test['test_content'];?></p>
+                            <a href="course-test.php?test_id=<?= $test['test_id'];?>" class="primary-btn">Take</a>
                         </div>
                     </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>

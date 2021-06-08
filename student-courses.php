@@ -12,7 +12,8 @@
                 </div>
             </div>
             <?php 
-                $q =    "SELECT * FROM courses";
+                $q =    "SELECT courses.course_id, courses.course_image, courses.course_name,
+                    courses.course_overview, users.user_uname FROM courses INNER JOIN users ON courses.user_id = users.user_id";
                 $courses = mysqli_query($con, $q);
             ?>
             <div class="row">
@@ -21,7 +22,7 @@
                     <div class="thumb">
                         <img class="img-fluid" src="img/<?= $course['course_image'];?>" alt="">
                     </div>
-                    <p class="meta">By <?= $course['user_id'];?></p>
+                    <p class="meta">By <?= $course['user_uname'];?></p>
                     <a href="course-details.php?course_id=<?= $course['course_id']; ?>">
                         <h5><?= $course['course_name'];?></h5>
                     </a>
@@ -29,19 +30,6 @@
                    
                 </div>
             <?php endforeach; ?>
-                <div class="col-lg-3 col-md-6 single-blog">
-                    <div class="thumb">
-                        <img class="img-fluid" src="img/xb2.jpg.pagespeed.ic.QjexspYIft.jpg" alt="">
-                    </div>
-                    <p class="meta">25 April, 2018 | By <a href="#">Mark Wiens</a></p>
-                    <a href="course-details.php">
-                        <h5>Computer Hardware Desktops And Notebooks</h5>
-                    </a>
-                    <p>
-                        Ah, the technical interview. Nothing like it. Not only does it cause anxiety, but it causes
-                        anxiety for several different reasons.
-                    </p>
-                </div>
             </div>
         </div>
     </section>
