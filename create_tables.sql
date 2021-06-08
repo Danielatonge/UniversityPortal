@@ -1,7 +1,6 @@
-DROP DATABASE IF EXISTS `uni_portal`;
-CREATE DATABASE `uni_portal`;
-USE `uni_portal`;
-
+DROP DATABASE IF EXISTS `heroku_e7ec67a7705bcd0`;
+CREATE DATABASE `heroku_e7ec67a7705bcd0`;
+USE `heroku_e7ec67a7705bcd0`;
 
 
 --

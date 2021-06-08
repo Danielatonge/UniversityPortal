@@ -1,17 +1,28 @@
 <?php
 
-    $db = array(
-        'db_host' => 'localhost',
-        'db_user' => 'root',
-        'db_pass' => 'root',
-        'db_name' => 'uni_portal'
-    );
+//Get Heroku ClearDB connection information
+$cleardb_url = parse_url(getenv("mysql://b2d89fe57b5978:241c8e67@us-cdbr-east-04.cleardb.com/heroku_e7ec67a7705bcd0?reconnect=true"));
+$cleardb_server = $cleardb_url["host"];
+$cleardb_username = $cleardb_url["user"];
+$cleardb_password = $cleardb_url["pass"];
+$cleardb_db = substr($cleardb_url["path"],1);
+$active_group = 'default';
+$query_builder = TRUE;
+// Connect to DB
+$con = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
-    foreach($db as $key => $value) {
-        define(strtoupper($key), $value);
-    }
+    // $db = array(
+    //     'db_host' => 'localhost',
+    //     'db_user' => 'root',
+    //     'db_pass' => 'root',
+    //     'db_name' => 'uni_portal'
+    // );
 
-    $con = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+    // foreach($db as $key => $value) {
+    //     define(strtoupper($key), $value);
+    // }
+
+    // $con = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
     define('SITENAME', 'UniPortal', false);
     define('SITESUBTITLE', '&nbsp;&nbsp;&nbsp;', false);
