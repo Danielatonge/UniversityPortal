@@ -26,7 +26,7 @@
                     <a href="course-details.php?course_id=<?= $course['course_id']; ?>">
                         <h5><?= $course['course_name'];?></h5>
                     </a>
-                    <p><?= $course['course_overview'];?></p>
+                    <p><?= $course['course_overview'];?>"Cooper," whose scientific name is Australotitan cooperensis, is estimated to have walked the Earth over 90 million years ago. </p>
                    
                 </div>
             <?php endforeach; ?>

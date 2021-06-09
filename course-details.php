@@ -21,7 +21,10 @@
                         </div>
                         <div class="jq-tab-content-wrapper">
                             <h4><?= $course['course_name']; ?></h4>
-                            <div class="jq-tab-content active" data-tab="1"><?= $course['course_overview']; ?></div>
+                            <div class="jq-tab-content active" data-tab="1"><?= $course['course_overview']; ?>
+                            "Cooper," whose scientific name is Australotitan cooperensis, is estimated to have walked the Earth over 90 million years ago. It was a titanosaur -- a plant-eating species belonging to the family of long-necked sauropods, the largest of the dinosaur species.
+The dinosaur is estimated to have reached a height of 5 to 6.5 meters (16.4 to 21.3 feet) at the hip, and a length of 25 to 30 meters (82 to 98.4 feet) -- making it as long as a basketball court and as tall as a two-story building, the ENHM said.
+                            </div>
                         </div>
                     </div>
                 </div>
