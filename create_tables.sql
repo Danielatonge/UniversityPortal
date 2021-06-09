@@ -124,14 +124,14 @@ INSERT INTO `books` (`book_preview`, `book`, `book_title`, `book_author`, `book_
 
 CREATE TABLE `grades` (
   `grade_id` int(3) NOT NULL AUTO_INCREMENT,
-  `group_id` int(3) NOT NULL,
   `user_id` int(3) NOT NULL,
+  `course_id` int(3) NOT NULL,
   `grade_practical` int(4) NOT NULL,
   `grade_theory` int(4) NOT NULL,
   `grade_result` int(4) NOT NULL,
   PRIMARY KEY (`grade_id`),
-  FOREIGN KEY (`group_id`) REFERENCES `groups`(`group_id`),
-  FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`)
+  FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`),
+   FOREIGN KEY (`course_id`) REFERENCES `courses`(`course_id`)
 );
 
 
@@ -170,3 +170,16 @@ INSERT INTO `questions` (`question_text`, `test_id`, `option_one`, `option_two`,
 ('Which of the functions is used to sort an array in descending order?', 1, 'sort()', 'asort()', 'rsort()', 3);
 INSERT INTO `questions` (`question_text`, `test_id`, `option_one`, `option_two`, `option_three`, `correct`) VALUES
 ('Who is the father of PHP?', 1, 'Rasmus Lerdorf', 'Larry Wall', 'Zeev Suraski', 1);
+
+
+--
+-- Table structure for table `contact`
+--
+CREATE TABLE `contact` (
+  `contact_id` int(3) NOT NULL AUTO_INCREMENT,
+  `contact_name` varchar(530) NOT NULL,
+  `contact_email` varchar(50) NOT NULL,
+  `contact_subject` varchar(100) NULL,
+  `contact_content` varchar(256) NOT NULL,
+  PRIMARY KEY (`contact_id`)
+);

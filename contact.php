@@ -1,9 +1,52 @@
 <?php include "includes/header.php"; ?>
 <?php include "includes/navigation.php"; ?>
+<?php
+            // -------------------- if 'Add contact' is submitted -------------------
+            if(isset($_POST['add_contact'])) {
+                // get all input data
+                $contact_name				= mysqli_real_escape_string($con, $_POST['name']);
+                $contact_email              = mysqli_real_escape_string($con, $_POST['email']);
+                $contact_subject              = mysqli_real_escape_string($con, $_POST['subject']);
+                $contact_content            = mysqli_real_escape_string($con, $_POST['message']);
+                
+                
+                if(empty($contact_name) || empty($contact_email) || empty($contact_content) ) {
+                    $div_class = 'danger';
+                    $div_msg = 'Please fill in all required fields.';
+                }else { 
+                    
+                    $q = "INSERT INTO contact (contact_name, contact_email, contact_subject, contact_content)
+                            VALUES ('$contact_name', '$contact_email', '$contact_subject', '$contact_content')";
+                    
+                    $result     = mysqli_query($con, $q);
+                    
+                    $div_info   = confirmQuery($result, 'insert');
+                    $div_class 	= $div_info['div_class'];
+                    $div_msg 	= $div_info['div_msg'];
+                    
+                    // reset to a blank form
+                    $contact_name = "";
+                    $contact_email = "";
+                    $contact_subject = "";
+                    $contact_content = "";
+                }
+            // start with a blank form
+            } else {
+                $contact_name = "";
+                $contact_email = "";
+                $contact_subject = "";
+                $contact_content = "";
+            }
+?>
 
 
     <section class="contact-page-area section-gap">
         <div class="container">
+            <?php if(!empty($div_msg)):?>
+                <div class="alert alert-<?php echo $div_class;?>">
+                    <?php echo $div_msg;?>
+                </div>
+            <?php endif;?>
             <div class="row">
                 <div class="col-lg-4 d-flex flex-column address-wrap">
                     <div class="single-contact-address d-flex flex-row">
@@ -36,7 +79,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-8">
                     <form class="form-area contact-form text-right" id="myForm"
                         action="" method="post">
                         <div class="row">
@@ -59,7 +101,7 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="alert-msg" style="text-align: left;"></div>
-                                <button class="genric-btn primary" style="float: right;">Send Message</button>
+                                <button name="add_contact" class="genric-btn primary" style="float: right;">Send Message</button>
                             </div>
                         </div>
                     </form>
