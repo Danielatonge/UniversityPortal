@@ -99,7 +99,7 @@
                 <div class="">
                     <h5>Upload Picture</h5>
                     <input type="file" name="user_image" placeholder="User Photo" onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'User Photo'" required class="single-input" value="<?php echo $user_image; ?>">
+                        onblur="this.placeholder = 'User Photo'" class="single-input" value="<?php echo $user_image; ?>">
                 </div>
 
                 <input type="password" class="form-control mt-10" name="user_pass" placeholder="Password"

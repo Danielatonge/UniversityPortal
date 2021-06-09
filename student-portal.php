@@ -46,7 +46,7 @@
                             <div class="overlay overlay-bg"></div>
                             <a href="student-library.php" >
                                 <div class="thumb">
-                                    <img class="content-image img-fluid d-block mx-auto" src="img/blog/cat-widget3.jpg"
+                                    <img class="content-image img-fluid d-block mx-auto" src="img/blog/cat-widget2.jpg"
                                         alt="">
                                 </div>
                                 <div class="content-details">
@@ -64,7 +64,7 @@
                             <div class="overlay overlay-bg"></div>
                             <a href="student-news.php" >
                                 <div class="thumb">
-                                    <img class="content-image img-fluid d-block mx-auto" src="img/blog/cat-widget3.jpg"
+                                    <img class="content-image img-fluid d-block mx-auto" src="img/blog/cat-widget1.jpg"
                                         alt="">
                                 </div>
                                 <div class="content-details">

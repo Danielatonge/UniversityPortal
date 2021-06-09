@@ -62,7 +62,7 @@
                 <div class="mt-10">
                     <h5>Picture</h5>
                     <input type="file" name="news_image" placeholder="News Image"
-                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'News Image'" required
+                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'News Image'" 
                         class="single-input" >
                 </div>
                 <div class="mt-10">

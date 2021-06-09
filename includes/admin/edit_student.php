@@ -4,10 +4,11 @@
                 $user_id = $_POST['user_id'];
                 $user_uname				= mysqli_real_escape_string($con, $_POST['user_uname']);
                 $user_number            = mysqli_real_escape_string($con, $_POST['user_number']);
+                $group_id            = mysqli_real_escape_string($con, $_POST['group_id']);
                 $user_email				= mysqli_real_escape_string($con, $_POST['user_email']);
                 $user_email_val		    = filter_var($user_email, FILTER_VALIDATE_EMAIL);
                 $user_pass				= mysqli_real_escape_string($con, $_POST['user_pass']);
-                $user_image				= ""; //$_FILES['user_image']['name'];
+                $user_image				= $_FILES['user_image']['name'];
                 
                 if($user_image == "") {
                     $user_image = 'default.jpg';
@@ -30,8 +31,8 @@
                     move_uploaded_file($image_tmp, "img/$user_image");
                     
                     $q = "UPDATE users SET user_uname = '$user_uname', user_pass = '$user_pass',
-                        user_email = '$user_email', user_image = '$user_image', user_role = '$user_role'
-                        WHERE user_id = $user_id";
+                        user_email = '$user_email', user_image = '$user_image', user_role = '$user_role',
+                        group_id = '$group_id' WHERE user_id = $user_id";
 
                 
                     

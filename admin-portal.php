@@ -10,7 +10,7 @@
                             <div class="overlay overlay-bg"></div>
                             <a href="admin-admin.php" >
                                 <div class="thumb">
-                                    <img class="content-image img-fluid d-block mx-auto" src="img/blog/cat-widget1.jpg"
+                                    <img class="content-image img-fluid d-block mx-auto" src="img/blog/xpp4.jpg.pagespeed.ic.q2IRnoTkFx.jpg"
                                         alt="">
                                 </div>
                                 <div class="content-details">
@@ -28,7 +28,7 @@
                             <div class="overlay overlay-bg"></div>
                             <a href="admin-students.php" >
                                 <div class="thumb">
-                                    <img class="content-image img-fluid d-block mx-auto" src="img/blog/cat-widget2.jpg"
+                                    <img class="content-image img-fluid d-block mx-auto" src="img/blog/xpp4.jpg.pagespeed.ic.q2IRnoTkFx.jpg"
                                         alt="">
                                 </div>
                                 <div class="content-details">
@@ -46,7 +46,7 @@
                             <div class="overlay overlay-bg"></div>
                             <a href="admin-groups.php" >
                                 <div class="thumb">
-                                    <img class="content-image img-fluid d-block mx-auto" src="img/blog/cat-widget3.jpg"
+                                    <img class="content-image img-fluid d-block mx-auto" src="img/blog/cat-widget1.jpg"
                                         alt="">
                                 </div>
                                 <div class="content-details">
@@ -64,7 +64,7 @@
                             <div class="overlay overlay-bg"></div>
                             <a href="admin-courses.php" >
                                 <div class="thumb">
-                                    <img class="content-image img-fluid d-block mx-auto" src="img/blog/cat-widget3.jpg"
+                                    <img class="content-image img-fluid d-block mx-auto" src="img/blog/cat-widget1.jpg"
                                         alt="">
                                 </div>
                                 <div class="content-details">
@@ -82,7 +82,7 @@
                             <div class="overlay overlay-bg"></div>
                             <a href="admin-teachers.php" >
                                 <div class="thumb">
-                                    <img class="content-image img-fluid d-block mx-auto" src="img/blog/cat-widget3.jpg"
+                                    <img class="content-image img-fluid d-block mx-auto" src="img/blog/xpp4.jpg.pagespeed.ic.q2IRnoTkFx.jpg"
                                         alt="">
                                 </div>
                                 <div class="content-details">
@@ -100,7 +100,7 @@
                             <div class="overlay overlay-bg"></div>
                             <a href="admin-news.php" >
                                 <div class="thumb">
-                                    <img class="content-image img-fluid d-block mx-auto" src="img/blog/cat-widget3.jpg"
+                                    <img class="content-image img-fluid d-block mx-auto" src="img/blog/xpp1.jpg.pagespeed.ic.sCxWtAGTiV.jpg"
                                         alt="">
                                 </div>
                                 <div class="content-details">

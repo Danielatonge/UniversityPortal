@@ -13,7 +13,7 @@
             </div>
             <div class="row align-items-center">
                 <div class="col-lg-6 no-padding info-area-left">
-                    <img class="img-fluid" src="img/about-img.jpg" alt="">
+                    <img class="img-fluid" src="img/rejoice.jpeg" alt="">
                 </div>
                 <div class="col-lg-6 info-area-right">
                     <h1>Who am I?</h1>
@@ -61,7 +61,7 @@
                 <div class="col-lg-4">
                     <div class="single-feature">
                         <div class="title">
-                            <h4>2. of universities</h4>
+                            <h4>2. Flexibility</h4>
                         </div>
                         <div class="desc-wrap">
                             <p>

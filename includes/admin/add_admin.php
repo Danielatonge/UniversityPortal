@@ -85,7 +85,7 @@
                 <div class="mt-20">
                     <h5>Upload Picture</h5>
                     <input type="file" name="user_image" placeholder="User Photo" onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'User Photo'" required class="single-input" value="<?php echo $user_image; ?>">
+                        onblur="this.placeholder = 'User Photo'"  class="single-input" value="<?php echo $user_image; ?>">
                 </div>
                 <button type="submit" name="add_admin_submit" class="primary-btn text-uppercase mt-10">Add</button>
                 <a href="admin-admin.php" class="genric-btn info text-uppercase mt-10 radius">Manage</a>
